@@ -1,0 +1,23 @@
+{
+  "name": "A2AI Community Skills",
+  "owner": {
+    "name": "Ads to AI Community"
+  },
+  "plugins": [
+    {
+      "name": "microsoft-ads",
+      "source": "../microsoft-ads",
+      "description": "Query Microsoft Advertising (Bing Ads) via SOAP API — campaigns, search terms, conversions."
+    },
+    {
+      "name": "bucket-list",
+      "source": "../bucket-list",
+      "description": "Track bucket list experiences, festivals, and natural phenomena with web enrichment."
+    },
+    {
+      "name": "e2e-qa-testing",
+      "source": "../e2e-qa-testing",
+      "description": "Automated E2E QA testing for Next.js apps using Playwright."
+    }
+  ]
+}
