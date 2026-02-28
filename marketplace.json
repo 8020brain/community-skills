@@ -1,0 +1,27 @@
+{
+  "version": "1.0.0",
+  "updated": "2026-03-01",
+  "skills": [
+    {
+      "name": "microsoft-ads",
+      "description": "Query Microsoft Advertising (Bing Ads) accounts via the SOAP API. Pull campaign performance, search terms, conversions.",
+      "contributor": "Michael Nadalin",
+      "version": "1.0.0",
+      "tags": ["ads", "microsoft", "bing", "paid-search"]
+    },
+    {
+      "name": "bucket-list",
+      "description": "Track bucket list experiences, festivals, natural phenomena, and photo trip opportunities with auto-enrichment via web research.",
+      "contributor": "Jeff Martyka",
+      "version": "1.0.0",
+      "tags": ["personal", "travel", "lifestyle"]
+    },
+    {
+      "name": "e2e-qa-testing",
+      "description": "Automated E2E QA testing for Next.js web apps using Playwright. Interviews you about your app, builds and runs a custom test suite.",
+      "contributor": "Paul",
+      "version": "1.0.0",
+      "tags": ["testing", "playwright", "nextjs", "qa"]
+    }
+  ]
+}
