@@ -1,23 +1,30 @@
 {
-  "name": "A2AI Community Skills",
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "a2ai-community",
+  "version": "1.0.0",
+  "description": "Community-contributed skills for the 8020brain template, built by Ads to AI members.",
   "owner": {
-    "name": "Ads to AI Community"
+    "name": "Ads to AI Community",
+    "email": "mike@mikerhodes.com.au"
   },
   "plugins": [
     {
       "name": "microsoft-ads",
-      "source": "../microsoft-ads",
-      "description": "Query Microsoft Advertising (Bing Ads) via SOAP API — campaigns, search terms, conversions."
+      "description": "Query Microsoft Advertising (Bing Ads) via SOAP API — campaigns, search terms, conversions.",
+      "source": "./microsoft-ads",
+      "author": { "name": "Michael Nadalin" }
     },
     {
       "name": "bucket-list",
-      "source": "../bucket-list",
-      "description": "Track bucket list experiences, festivals, and natural phenomena with web enrichment."
+      "description": "Track bucket list experiences, festivals, and natural phenomena with auto-enrichment via web research.",
+      "source": "./bucket-list",
+      "author": { "name": "Jeff Martyka" }
     },
     {
       "name": "e2e-qa-testing",
-      "source": "../e2e-qa-testing",
-      "description": "Automated E2E QA testing for Next.js apps using Playwright."
+      "description": "Automated E2E QA testing for Next.js apps using Playwright.",
+      "source": "./e2e-qa-testing",
+      "author": { "name": "Paul Saunders" }
     }
   ]
 }
