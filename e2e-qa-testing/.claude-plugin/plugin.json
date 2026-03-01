@@ -1,1 +1,1 @@
-{"name":"e2e-qa-testing","version":"1.0.0","description":"Automated E2E QA testing for Next.js apps using Playwright. Interviews you, builds a custom test suite, runs it, and reports results.","contributor":"Paul Saunders"}
+{"name":"e2e-qa-testing","version":"1.0.0","description":"Automated E2E QA testing for Next.js apps using Playwright.","author":{"name":"Paul Saunders"}}
