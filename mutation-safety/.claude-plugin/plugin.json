@@ -1,0 +1,1 @@
+{"name":"mutation-safety","version":"1.0.0","description":"Mandatory safety system that enforces two-step approval for all Google Ads mutations and destructive Google Sheets operations.","author":{"name":"Kurt Henninger"}}

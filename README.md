@@ -17,6 +17,7 @@ From your brain, run:
 | `microsoft-ads` | Michael Nadalin | Query Microsoft Advertising (Bing Ads) via SOAP API — campaigns, search terms, conversions |
 | `bucket-list` | Jeff Martyka | Track bucket list experiences, festivals, and natural phenomena with web enrichment |
 | `e2e-qa-testing` | Paul Saunders | Automated E2E QA testing for Next.js apps using Playwright |
+| `mutation-safety` | Kurt Henninger | Two-step approval for Google Ads mutations and destructive Sheets operations |
 
 ## Contributing a Skill
 

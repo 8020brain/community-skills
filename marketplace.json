@@ -22,6 +22,13 @@
       "contributor": "Paul",
       "version": "1.0.0",
       "tags": ["testing", "playwright", "nextjs", "qa"]
+    },
+    {
+      "name": "mutation-safety",
+      "description": "Mandatory safety system that enforces two-step approval for all Google Ads mutations and destructive Google Sheets operations.",
+      "contributor": "Kurt Henninger",
+      "version": "1.0.0",
+      "tags": ["google-ads", "safety", "sheets"]
     }
   ]
 }
