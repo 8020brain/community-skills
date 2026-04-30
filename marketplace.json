@@ -1,34 +1,38 @@
 {
-  "version": "1.0.0",
-  "updated": "2026-03-01",
+  "version": "1.1.0",
+  "updated": "2026-04-30",
   "skills": [
     {
       "name": "microsoft-ads",
+      "displayName": "Microsoft Ads",
       "description": "Query Microsoft Advertising (Bing Ads) accounts via the SOAP API. Pull campaign performance, search terms, conversions.",
       "contributor": "Michael Nadalin",
       "version": "1.0.0",
-      "tags": ["ads", "microsoft", "bing", "paid-search"]
+      "tags": ["Ads", "Microsoft", "Bing"]
     },
     {
       "name": "bucket-list",
+      "displayName": "Bucket List",
       "description": "Track bucket list experiences, festivals, natural phenomena, and photo trip opportunities with auto-enrichment via web research.",
       "contributor": "Jeff Martyka",
       "version": "1.0.0",
-      "tags": ["personal", "travel", "lifestyle"]
+      "tags": ["Personal", "Travel", "Lifestyle"]
     },
     {
       "name": "e2e-qa-testing",
+      "displayName": "E2E QA Testing",
       "description": "Automated E2E QA testing for Next.js web apps using Playwright. Interviews you about your app, builds and runs a custom test suite.",
-      "contributor": "Paul",
+      "contributor": "Paul Saunders",
       "version": "1.0.0",
-      "tags": ["testing", "playwright", "nextjs", "qa"]
+      "tags": ["Testing", "Playwright", "Next.js", "QA"]
     },
     {
       "name": "mutation-safety",
+      "displayName": "Mutation Safety",
       "description": "Mandatory safety system that enforces two-step approval for all Google Ads mutations and destructive Google Sheets operations.",
       "contributor": "Kurt Henninger",
       "version": "1.0.0",
-      "tags": ["google-ads", "safety", "sheets"]
+      "tags": ["Google Ads", "Safety", "Sheets"]
     }
   ]
 }
