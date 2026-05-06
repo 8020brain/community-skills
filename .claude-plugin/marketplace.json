@@ -31,6 +31,12 @@
       "description": "Mandatory safety system that enforces two-step approval for all Google Ads mutations and destructive Google Sheets operations.",
       "source": "./mutation-safety",
       "author": { "name": "Kurt Henninger" }
+    },
+    {
+      "name": "home-repair-funds",
+      "description": "Homeowner sinking-fund planner. Tracks major home systems with install dates, lifespans, and replacement costs. Calculates weekly savings split across HYSA + brokerage.",
+      "source": "./home-repair-funds",
+      "author": { "name": "Jeff Martyka" }
     }
   ]
 }
