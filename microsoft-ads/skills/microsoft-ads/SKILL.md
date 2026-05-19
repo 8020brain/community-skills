@@ -19,7 +19,7 @@ MICROSOFT_ADS_CLIENT_SECRET=...
 MICROSOFT_ADS_REFRESH_TOKEN=...
 ```
 
-See `references/SETUP-GUIDE.md` for full setup instructions.
+See `references/CONNECTION-GUIDE.md` for full setup instructions, including how to clear the two common Azure / developer-token walls.
 
 ## Command Format
 
