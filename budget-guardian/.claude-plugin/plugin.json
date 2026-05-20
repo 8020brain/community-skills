@@ -1,0 +1,1 @@
+{"name":"budget-guardian","version":"1.0.0","description":"Monitors a Google Ads MCC for monthly budget overruns and sends Slack alerts at 100% and 120% of monthly budget per account. Alert-only, never pauses campaigns. Runs on GitHub Actions on a 2-hour cron.","author":{"name":"Kurt Henninger"}}
