@@ -1,7 +1,15 @@
 {
-  "version": "1.4.0",
-  "updated": "2026-05-21",
+  "version": "1.5.0",
+  "updated": "2026-05-22",
   "skills": [
+    {
+      "name": "threshold-recommender",
+      "displayName": "Threshold Recommender",
+      "description": "Generates an interactive Shopping Threshold Recommender HTML report for a Google Ads client. Pulls 8 weeks of product-level Shopping data and builds an HTML app with adjustable ROAS/CPA and Cost/Clicks sliders that bucket products into Profitable, Costly, Flukes, and Meh quadrants in real time. Adds AI recommendations based on Andrew Lolk's framework: campaign structure verdict, per-bucket data-fragmentation risk, bestseller ROAS headroom, and zombie subcategory analysis.",
+      "contributor": "Gabriele Benedetti",
+      "version": "1.0.0",
+      "tags": ["Google Ads", "Shopping", "Reporting"]
+    },
     {
       "name": "budget-guardian",
       "displayName": "Budget Guardian",

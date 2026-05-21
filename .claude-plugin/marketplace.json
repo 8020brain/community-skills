@@ -9,6 +9,18 @@
   },
   "plugins": [
     {
+      "name": "threshold-recommender",
+      "description": "Interactive Shopping Threshold Recommender for Google Ads. Product-level bucketing with adjustable ROAS/CPA sliders and AI recommendations.",
+      "source": "./threshold-recommender",
+      "author": { "name": "Gabriele Benedetti" }
+    },
+    {
+      "name": "budget-guardian",
+      "description": "Monitors a Google Ads MCC for monthly budget overruns and sends Slack alerts at 100% and 120% of monthly budget per account. Alert-only, never pauses campaigns.",
+      "source": "./budget-guardian",
+      "author": { "name": "Kurt Henninger" }
+    },
+    {
       "name": "microsoft-ads",
       "description": "Query Microsoft Advertising (Bing Ads) via SOAP API — campaigns, search terms, conversions.",
       "source": "./microsoft-ads",
