@@ -1,0 +1,1597 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Website Builder Skill Pack | Clever Operators</title>
+<style>
+:root {
+  --navy: #0F1C2E;
+  --navy-mid: #1A2E45;
+  --teal: #2BA5B5;
+  --teal-dark: #1A7A8A;
+  --teal-light: #E6F5F7;
+  --white: #FFFFFF;
+  --ink: #1F2937;
+  --ink-light: #374151;
+  --ink-muted: #6B7280;
+  --grey-bg: #F3F4F6;
+  --border: #E5E7EB;
+  --success: #059669;
+  --success-bg: #D1FAE5;
+  --warning-bg: #FEF3C7;
+  --warning: #D97706;
+  --sidebar-width: 210px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+  color: var(--ink);
+  line-height: 1.6;
+  font-size: 11pt;
+  display: flex;
+}
+
+/* Sidebar */
+.sidebar {
+  width: var(--sidebar-width);
+  min-height: 100vh;
+  background: var(--navy);
+  color: var(--white);
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow-y: hidden;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar-logo {
+  padding: 20px 20px 16px;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  flex-shrink: 0;
+}
+
+.sidebar nav {
+  overflow-y: auto;
+  flex: 1;
+  padding: 12px 0 40px;
+}
+
+.sidebar-logo-text {
+  font-size: 11pt;
+  font-weight: 700;
+  color: var(--white);
+  letter-spacing: -0.3px;
+  line-height: 1.2;
+  text-decoration: none;
+  display: block;
+}
+
+.sidebar-logo-sub {
+  font-size: 8pt;
+  color: rgba(255,255,255,0.45);
+  font-weight: 500;
+  margin-top: 3px;
+}
+
+.sidebar-label {
+  font-size: 9.5pt;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.55);
+  padding: 0 20px 10px;
+}
+
+.sidebar nav a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 20px;
+  color: rgba(255,255,255,0.6);
+  text-decoration: none;
+  font-size: 9.5pt;
+  font-weight: 500;
+  border-left: 3px solid transparent;
+  transition: all 0.15s;
+  line-height: 1.3;
+}
+
+.sidebar nav a:hover {
+  color: var(--white);
+  background: rgba(255,255,255,0.06);
+}
+
+.sidebar nav a.active {
+  color: var(--white);
+  border-left-color: var(--teal);
+  background: rgba(43,165,181,0.12);
+  font-weight: 600;
+}
+
+.sidebar nav a .step-num {
+  flex-shrink: 0;
+  width: 22px;
+  height: 22px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 8pt;
+  font-weight: 700;
+}
+
+.sidebar nav a.active .step-num {
+  background: var(--teal);
+}
+
+/* Main */
+main { flex: 1; min-width: 0; }
+
+.intro-cover {
+  background: var(--navy);
+  color: var(--white);
+  padding: 56px 60px 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 24px;
+}
+
+.intro-cover h1 {
+  font-size: 34pt;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 0;
+  letter-spacing: -0.5px;
+  line-height: 1.1;
+}
+
+.intro-cover p {
+  font-size: 13pt;
+  color: rgba(255,255,255,0.6);
+  max-width: 520px;
+  line-height: 1.6;
+}
+
+.intro-meta {
+  font-size: 9.5pt;
+  color: rgba(255,255,255,0.4);
+  margin-top: 8px;
+}
+
+.intro-steps {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 8px;
+}
+
+.intro-step {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.15);
+  color: rgba(255,255,255,0.7);
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 9pt;
+  font-weight: 500;
+  text-decoration: none;
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
+  cursor: pointer;
+}
+
+.intro-step:hover {
+  background: var(--teal);
+  border-color: var(--teal);
+  color: var(--white);
+}
+
+.chapter-header {
+  background: var(--navy);
+  color: var(--white);
+  padding: 48px 60px 40px;
+  scroll-margin-top: 0;
+}
+
+.chapter-header .step-badge {
+  display: inline-block;
+  background: var(--teal);
+  color: var(--white);
+  padding: 5px 16px;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 8.5pt;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 18px;
+}
+
+.chapter-header h1 {
+  font-size: 26pt;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 10px;
+  letter-spacing: -0.5px;
+  line-height: 1.1;
+}
+
+.chapter-header .subtitle {
+  font-size: 12pt;
+  color: rgba(255,255,255,0.6);
+  max-width: 480px;
+  line-height: 1.5;
+}
+
+.content {
+  max-width: 700px;
+  padding: 40px 60px 60px;
+}
+
+h2 {
+  font-size: 15pt;
+  font-weight: 600;
+  color: var(--teal-dark);
+  margin: 36px 0 12px 0;
+  padding-bottom: 8px;
+  border-bottom: 2px solid var(--teal-light);
+  scroll-margin-top: 24px;
+}
+
+h3 {
+  font-size: 11.5pt;
+  font-weight: 600;
+  color: var(--ink);
+  margin: 20px 0 8px 0;
+}
+
+p { margin: 0 0 10px 0; }
+strong { font-weight: 600; }
+
+/* Skill cards */
+.skill-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 16px 0 24px;
+}
+
+.skill-card {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 16px 20px;
+  background: var(--white);
+}
+
+.skill-card-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 6px;
+}
+
+.skill-badge {
+  background: var(--navy);
+  color: var(--white);
+  padding: 3px 10px;
+  border-radius: 4px;
+  font-size: 8.5pt;
+  font-weight: 600;
+  font-family: 'SF Mono', 'Fira Code', monospace;
+  white-space: nowrap;
+}
+
+.skill-title {
+  font-weight: 600;
+  font-size: 11pt;
+  color: var(--ink);
+}
+
+.skill-desc {
+  font-size: 10pt;
+  color: var(--ink-light);
+  margin: 0;
+  line-height: 1.5;
+}
+
+.skill-trigger {
+  margin-top: 8px;
+  font-size: 9.5pt;
+  color: var(--ink-muted);
+}
+
+.skill-trigger span {
+  background: var(--grey-bg);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 2px 8px;
+  font-family: 'SF Mono', 'Fira Code', monospace;
+  font-size: 9pt;
+}
+
+/* Steps */
+.step {
+  display: flex;
+  gap: 16px;
+  margin: 18px 0;
+}
+
+.step-number {
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  background: var(--teal);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 11pt;
+  margin-top: 2px;
+}
+
+.step-content { flex: 1; padding-top: 4px; }
+.step-content h3 { margin-top: 0; }
+
+/* Checklist */
+.checklist { list-style: none; margin: 12px 0 20px 0; padding: 0; }
+.checklist li {
+  padding: 6px 0 6px 28px;
+  position: relative;
+  border-bottom: 1px solid var(--border);
+  font-size: 10.5pt;
+}
+.checklist li:last-child { border-bottom: none; }
+.checklist li::before {
+  content: '☐';
+  position: absolute;
+  left: 0;
+  color: var(--ink-muted);
+  font-size: 13pt;
+  line-height: 1.2;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 12px 0 20px 0;
+  font-size: 10pt;
+}
+
+th {
+  font-weight: 600;
+  text-align: left;
+  padding: 8px 12px;
+  background: var(--grey-bg);
+  border-bottom: 2px solid var(--border);
+  color: var(--ink-light);
+  font-size: 9pt;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+td {
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+}
+
+tr:last-child td { border-bottom: none; }
+
+code {
+  font-family: 'SF Mono', 'Fira Code', monospace;
+  font-size: 9.5pt;
+  background: var(--grey-bg);
+  padding: 2px 6px;
+  border-radius: 4px;
+  color: var(--teal-dark);
+}
+
+pre {
+  background: var(--navy);
+  color: #e6edf3;
+  padding: 14px 18px;
+  border-radius: 8px;
+  margin: 10px 0 16px 0;
+  font-size: 9.5pt;
+  line-height: 1.5;
+  overflow-wrap: break-word;
+  white-space: pre-wrap;
+}
+
+pre code { background: none; color: inherit; padding: 0; }
+
+.callout {
+  background: var(--teal-light);
+  border-left: 4px solid var(--teal);
+  padding: 14px 18px;
+  margin: 16px 0;
+  border-radius: 0 8px 8px 0;
+}
+
+.callout-title {
+  font-weight: 600;
+  color: var(--teal-dark);
+  margin-bottom: 4px;
+  font-size: 10pt;
+}
+
+.callout-success {
+  background: var(--success-bg);
+  border-left: 4px solid var(--success);
+  padding: 14px 18px;
+  margin: 16px 0;
+  border-radius: 0 8px 8px 0;
+}
+
+.callout-success .callout-title { color: var(--success); }
+
+.callout-neutral {
+  background: var(--grey-bg);
+  border-left: 4px solid var(--border);
+  padding: 14px 18px;
+  margin: 16px 0;
+  border-radius: 0 8px 8px 0;
+}
+
+.callout-warning {
+  background: var(--warning-bg);
+  border-left: 4px solid var(--warning);
+  padding: 14px 18px;
+  margin: 16px 0;
+  border-radius: 0 8px 8px 0;
+}
+
+.callout-warning .callout-title { color: var(--warning); }
+
+ul, ol { margin: 8px 0 16px 24px; }
+li { margin-bottom: 6px; }
+
+hr { border: none; border-top: 1px solid var(--border); margin: 36px 0; }
+
+.chapter-divider {
+  border: none;
+  border-top: 3px solid var(--navy);
+  margin: 0;
+}
+
+.say-this {
+  background: var(--grey-bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 14px 18px;
+  margin: 12px 0 16px;
+  font-style: italic;
+  color: var(--ink-light);
+  font-size: 10.5pt;
+}
+
+.say-this::before {
+  content: 'Say to Claude: ';
+  font-style: normal;
+  font-weight: 600;
+  color: var(--teal-dark);
+  display: block;
+  font-size: 9pt;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 6px;
+}
+
+.you-get {
+  background: var(--success-bg);
+  border-left: 4px solid var(--success);
+  padding: 14px 18px;
+  margin: 12px 0 20px;
+  border-radius: 0 8px 8px 0;
+  font-size: 10pt;
+}
+
+.you-get-title {
+  font-weight: 600;
+  color: var(--success);
+  font-size: 9.5pt;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 6px;
+}
+
+.page-footer {
+  background: var(--navy);
+  color: rgba(255,255,255,0.4);
+  padding: 32px 60px;
+  font-size: 9pt;
+  margin-top: 60px;
+}
+
+.page-footer a { color: rgba(255,255,255,0.6); }
+
+@media print {
+  .sidebar { display: none; }
+  body { display: block; }
+}
+
+@media (max-width: 900px) {
+  .sidebar { display: none; }
+  body { display: block; }
+  .content { padding: 32px 28px 48px; }
+  .chapter-header { padding: 40px 28px 36px; }
+  .intro-cover { padding: 48px 28px; }
+}
+</style>
+</head>
+<body>
+
+<!-- Sidebar -->
+<aside class="sidebar">
+  <div class="sidebar-logo">
+    <a href="#intro" style="text-decoration:none; display:block;">
+      <img src="logo-wordmark-white.svg" alt="Clever Operators" style="height:160px; width:auto; display:block; margin-bottom:8px;">
+    </a>
+    <div class="sidebar-logo-sub">Website Builder Pack</div>
+  </div>
+  <nav>
+    <a href="#whats-included">What's Included</a>
+    <a href="#before-you-start">Before You Start</a>
+    <a href="#install">
+      <span class="step-num">1</span>
+      Install
+    </a>
+    <a href="#voice-dna">
+      <span class="step-num">2</span>
+      Voice DNA
+    </a>
+    <a href="#full-build">
+      <span class="step-num">3</span>
+      Full Build
+    </a>
+    <a href="#individual-skills">
+      <span class="step-num">4</span>
+      Individual Skills
+    </a>
+    <a href="#website-builder">Website Builder</a>
+    <a href="#site-planner">Site Planner</a>
+    <a href="#theme-scaffolder">Theme Scaffolder</a>
+    <a href="#page-builder">Page Builder</a>
+    <a href="#content-writer">Content Writer</a>
+    <a href="#superhuman-writer">Superhuman Writer</a>
+    <a href="#seo-aeo">SEO / AEO</a>
+    <a href="#wordpress-security-audit">Security Audit</a>
+    <a href="#launch-checklist">Launch Checklist</a>
+    <a href="#plugins">Plugins</a>
+    <a href="#go-live">
+      <span class="step-num">5</span>
+      Go Live
+    </a>
+    <a href="#troubleshooting">Troubleshooting</a>
+    <a href="#help">Get Help</a>
+    <a href="#terms">Licence</a>
+  </nav>
+</aside>
+
+<main>
+
+  <!-- Intro cover -->
+  <section id="intro" class="intro-cover">
+    <div>
+      <h1>Website Builder<br>Skill Pack</h1>
+      <p>Ten Claude skills. Ten-stage build process. Takes you from blank folder to launch-ready WordPress site, without a developer.</p>
+      <p class="intro-meta">By Zara Imrie &nbsp;·&nbsp; Clever Operators &nbsp;·&nbsp; cleveroperators.com</p>
+    </div>
+    <div class="intro-steps">
+      <a href="#install" class="intro-step">1. Install</a>
+      <a href="#voice-dna" class="intro-step">2. Voice DNA</a>
+      <a href="#full-build" class="intro-step">3. Full Build</a>
+      <a href="#individual-skills" class="intro-step">4. Individual Skills</a>
+      <a href="#go-live" class="intro-step">5. Go Live</a>
+    </div>
+  </section>
+
+  <!-- What's included -->
+  <hr class="chapter-divider">
+  <section id="whats-included">
+    <div class="chapter-header">
+      <h1>What's Included</h1>
+      <p class="subtitle">Ten skills that handle every stage of the build. Ten stages in total. Use them together or one at a time.</p>
+    </div>
+    <div class="content">
+
+      <p>The Website Builder Skill Pack is a set of Claude skills that guide you through building a complete WordPress website from scratch. You install the skills into Claude Code, describe your business, and Claude handles the technical work: planning the pages, generating the theme files, building each page template, writing the copy, and running a pre-launch check before you go live.</p>
+
+      <p>No developer needed. No page builders. No drag-and-drop editors. Just clean, custom-coded WordPress built through a conversation with Claude.</p>
+
+      <p>The skills work together as a complete pipeline, or you can use any of them individually if you only need one part of the process.</p>
+
+      <div class="skill-grid">
+
+        <div class="skill-card">
+          <div class="skill-card-header">
+            <span class="skill-badge">website-builder</span>
+            <span class="skill-title">Full Build Orchestrator</span>
+          </div>
+          <p class="skill-desc">Runs the complete website build from start to finish. Works through ten stages: Discovery, Site Plan, SEO Structure Analysis, Theme, Pages, Keyword Planning, Copy, SEO/AEO Audit, Security Audit, and Launch Check. Confirms with you at each stage before moving on. This is the skill to use if you want to build an entire site in one workflow.</p>
+          <p class="skill-trigger">Trigger: <span>"Build me a website for my business"</span></p>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-card-header">
+            <span class="skill-badge">site-planner</span>
+            <span class="skill-title">Site Planner</span>
+          </div>
+          <p class="skill-desc">Takes your business details and produces a complete site plan: which pages you need, how they're structured, what the navigation looks like, and the order to build them in. Gives you one clear recommendation per decision, no options overload.</p>
+          <p class="skill-trigger">Trigger: <span>"Plan my website"</span></p>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-card-header">
+            <span class="skill-badge">theme-scaffolder</span>
+            <span class="skill-title">Theme Scaffolder</span>
+          </div>
+          <p class="skill-desc">Generates all the files needed for a working WordPress theme, style.css, theme.json, templates, header, footer, and starter patterns. Defaults to block themes (Full Site Editing). You copy the output into your Local WP themes folder and activate it.</p>
+          <p class="skill-trigger">Trigger: <span>"Create a WordPress theme for my business"</span></p>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-card-header">
+            <span class="skill-badge">page-builder</span>
+            <span class="skill-title">Page Builder</span>
+          </div>
+          <p class="skill-desc">Builds individual page templates with conversion-optimised layouts. Covers homepage, about, services, individual service pages, contact, and landing pages. Each layout follows CRO best practices, clear value proposition above the fold, strategic CTA placement, trust signals near conversion points.</p>
+          <p class="skill-trigger">Trigger: <span>"Build me a homepage for [business]"</span></p>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-card-header">
+            <span class="skill-badge">content-writer</span>
+            <span class="skill-title">Content Writer</span>
+          </div>
+          <p class="skill-desc">Writes ready-to-paste copy for every page, headlines, body text, CTAs, service descriptions, about sections, and testimonial frameworks. Focuses on conversion: benefit-led headlines, customer-focused body copy, specific CTAs. After generating copy it automatically runs the superhuman-writer pass.</p>
+          <p class="skill-trigger">Trigger: <span>"Write the copy for my homepage"</span></p>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-card-header">
+            <span class="skill-badge">superhuman-writer</span>
+            <span class="skill-title">Superhuman Writer</span>
+          </div>
+          <p class="skill-desc">Takes any copy and makes it sound like a real person wrote it. Removes AI patterns, fixes rhythm, adds human texture. Runs automatically after the content-writer, but you can also use it standalone on any text, emails, service descriptions, bios, anything. If you've set up a voice-dna.md file it will write in your specific voice.</p>
+          <p class="skill-trigger">Trigger: <span>"Make this sound human"</span> or <span>"Rewrite this copy"</span></p>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-card-header">
+            <span class="skill-badge">seo-aeo</span>
+            <span class="skill-title">SEO / AEO Optimiser</span>
+          </div>
+          <p class="skill-desc">Runs at three points in the build. After the site plan: analyses page hierarchy, topical authority, internal linking, and URL structure. Before copy is written: produces a keyword plan with a primary keyword, intent classification, and supporting keywords for every page. After copy is written: audits every page for on-page SEO and AEO quality, scores each page out of 10, generates schema markup (JSON-LD), and produces a fix list. Target is 8/10 per page before launch.</p>
+          <p class="skill-trigger">Trigger: <span>"Keyword research for my site"</span> or <span>"SEO audit"</span></p>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-card-header">
+            <span class="skill-badge">launch-checklist</span>
+            <span class="skill-title">Launch Checklist</span>
+          </div>
+          <p class="skill-desc">Produces a personalised pre-launch audit covering content completeness, SEO basics, performance, mobile responsiveness, conversion readiness, security, legal compliance, and go-live technical steps. Every item is tagged BLOCKER, IMPORTANT, or NICE-TO-HAVE so you know exactly what to fix before going live.</p>
+          <p class="skill-trigger">Trigger: <span>"Give me a pre-launch checklist"</span></p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Before you start -->
+  <hr class="chapter-divider">
+  <section id="before-you-start">
+    <div class="chapter-header">
+      <h1>Before You Start</h1>
+      <p class="subtitle">Two tools to install and a few things to have ready.</p>
+    </div>
+    <div class="content">
+
+      <h2>Tools You Need</h2>
+
+      <div class="step">
+        <div class="step-number">1</div>
+        <div class="step-content">
+          <h3>Claude Code</h3>
+          <p>The command-line tool that lets Claude work directly with files on your computer. This is what activates the skills.</p>
+          <p>Install it at <strong>claude.ai/code</strong>. Once installed, type <code>claude</code> in your terminal to confirm it's working.</p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-number">2</div>
+        <div class="step-content">
+          <h3>Local WP</h3>
+          <p>A free tool that runs WordPress on your computer. No hosting account or domain needed to start.</p>
+          <p>Download it at <strong>localwp.com</strong>, install it, and create a new site. Write down your WordPress admin username and password.</p>
+        </div>
+      </div>
+
+      <h2>What to Have Ready</h2>
+      <ul class="checklist">
+        <li>Your business name and what you do</li>
+        <li>Who your customers are and what they're looking for</li>
+        <li>The main goal of your website (leads, sales, bookings, or credibility)</li>
+        <li>Brand colours as hex codes, if you have them (e.g. #1E40AF). If not, Claude will suggest some.</li>
+        <li>Any existing copy, about page text, service descriptions, testimonials, team bios. Even rough notes help.</li>
+      </ul>
+
+      <div class="callout">
+        <div class="callout-title">No coding knowledge needed</div>
+        Claude handles all the technical parts. Your job is to describe your business and tell Claude what looks right.
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Step 1: Install -->
+  <hr class="chapter-divider">
+  <section id="install">
+    <div class="chapter-header">
+      <div class="step-badge">Step 1</div>
+      <h1>Install the Skills</h1>
+      <p class="subtitle">Drop the pack in your project folder and ask Claude to set it up.</p>
+    </div>
+    <div class="content">
+
+      <div class="step">
+        <div class="step-number">1</div>
+        <div class="step-content">
+          <h3>Create your project folder</h3>
+          <p>Create a folder on your computer for your website project. This is where Claude will save all the files it generates.</p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-number">2</div>
+        <div class="step-content">
+          <h3>Drop the pack in</h3>
+          <p>Put the <code>website-builder-pack</code> folder anywhere inside your project folder. It doesn't matter where.</p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-number">3</div>
+        <div class="step-content">
+          <h3>Open Claude Code and ask it to install</h3>
+          <p>Open your terminal, navigate to your project folder, and run:</p>
+          <pre><code>claude</code></pre>
+          <p>Then tell Claude:</p>
+          <div class="say-this">"Install the website builder skill pack. The folder is at [path to the pack folder]."</div>
+          <p>Claude will copy all the skill folders into <code>.claude/skills/</code>, creating the folder if it doesn't exist yet. If you already have other skills installed, it will leave them untouched.</p>
+        </div>
+      </div>
+
+      <div class="callout-success">
+        <div class="callout-title">That's it</div>
+        Once Claude confirms the install, the skills are live. No folder copying, no terminal commands beyond opening Claude Code.
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Step 2: Voice DNA -->
+  <hr class="chapter-divider">
+  <section id="voice-dna">
+    <div class="chapter-header">
+      <div class="step-badge">Step 2</div>
+      <h1>Voice DNA</h1>
+      <p class="subtitle">Handled automatically. Claude writes it from your answers.</p>
+    </div>
+    <div class="content">
+
+      <p>The <strong>superhuman-writer</strong> skill makes your copy sound human. By default it applies general writing rules: short sentences, no AI filler, natural rhythm.</p>
+
+      <p>If it has a voice reference, it writes in your specific style. You don't need to create this file yourself.</p>
+
+      <h2>How It Works</h2>
+
+      <div class="step">
+        <div class="step-number">1</div>
+        <div class="step-content">
+          <h3>During a full build</h3>
+          <p>Claude asks about your brand voice as part of Stage 1 Discovery. After you answer, it writes the <code>voice-dna.md</code> file itself. Nothing for you to fill in.</p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-number">2</div>
+        <div class="step-content">
+          <h3>Using superhuman-writer standalone</h3>
+          <p>If no <code>voice-dna.md</code> exists, the skill asks you a few short questions about your tone, audience, and style, then writes the file from your answers before continuing.</p>
+        </div>
+      </div>
+
+      <div class="callout-neutral">
+        <div class="callout-title">No voice reference?</div>
+        The superhuman-writer will still improve your copy. It just won't be tuned to your specific voice or brand.
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Step 3: Full Build -->
+  <hr class="chapter-divider">
+  <section id="full-build">
+    <div class="chapter-header">
+      <div class="step-badge">Step 3</div>
+      <h1>Full Build</h1>
+      <p class="subtitle">Use the website-builder skill to run the entire process from start to finish.</p>
+    </div>
+    <div class="content">
+
+      <p>The <strong>website-builder</strong> skill is the master skill. It runs ten stages in one guided workflow: Discovery, Site Plan, SEO Structure Analysis, Theme, Pages, Keyword Planning, Copy, SEO/AEO Audit, Security Audit, and Launch Check. Claude confirms with you at each stage before moving on.</p>
+
+      <h2>Start the Build</h2>
+
+      <div class="say-this">"Build me a website for my business."</div>
+
+      <p>Claude will ask for your business details, then work through each stage in order.</p>
+
+      <h2>The Ten Stages</h2>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Stage</th>
+            <th>What Happens</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1. Discovery</td>
+            <td>Claude asks about your business, customers, goals, brand colours, and any existing content</td>
+          </tr>
+          <tr>
+            <td>2. Site Plan</td>
+            <td>Claude produces a page list, site map, navigation structure, and build order. You confirm before continuing.</td>
+          </tr>
+          <tr>
+            <td>3. SEO Structure</td>
+            <td>Claude analyses the site plan for topical authority, page hierarchy, internal linking, URL structure, and missing pages. Recommends changes before anything is built.</td>
+          </tr>
+          <tr>
+            <td>4. Theme</td>
+            <td>Claude generates all theme files. You copy them into Local WP and activate the theme. Claude waits for confirmation.</td>
+          </tr>
+          <tr>
+            <td>5. Pages</td>
+            <td>Claude builds each page template in order, starting with the homepage. You copy each file into your theme.</td>
+          </tr>
+          <tr>
+            <td>6. Keyword Planning</td>
+            <td>Claude asks if you have existing keyword research. If you do, paste it in. If not, Claude carries out the research and maps a primary keyword, intent, and supporting keywords to every page.</td>
+          </tr>
+          <tr>
+            <td>7. Copy</td>
+            <td>Claude writes copy for every page using the keyword plan, then runs a voice pass to make it sound human.</td>
+          </tr>
+          <tr>
+            <td>8. SEO/AEO Audit</td>
+            <td>Claude scores every page out of 10, generates schema markup, and produces a fix list. Target is 8/10 per page.</td>
+          </tr>
+          <tr>
+            <td>9. Security Audit</td>
+            <td>Claude scans the generated theme JavaScript, PHP files, and directory for code-level vulnerabilities. All Critical and High findings must be resolved before upload. Server-level checks (wp-config, .htaccess, exposed files) run separately after going live using the production audit skill.</td>
+          </tr>
+          <tr>
+            <td>10. Launch Check</td>
+            <td>Claude audits the site and returns a personalised checklist. Fix all BLOCKERs before going live.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="callout-success">
+        <div class="callout-title">Close and come back any time</div>
+        After each confirmed stage, Claude saves your progress to a <code>website-build.md</code> file in your project folder. Come back the next day, open Claude Code, and say "continue my website build." Claude reads the file and picks up exactly where you left off. No need to repeat anything.
+      </div>
+
+      <h2>Skipping a Stage</h2>
+      <p>If you want to skip a stage, for example, you'll write your own copy, just tell Claude. It will move to the next stage without issue.</p>
+
+    </div>
+  </section>
+
+  <!-- Step 4: Individual Skills -->
+  <hr class="chapter-divider">
+  <section id="individual-skills">
+    <div class="chapter-header">
+      <div class="step-badge">Step 4</div>
+      <h1>Individual Skills</h1>
+      <p class="subtitle">Use each skill on its own when you only need one part of the process.</p>
+    </div>
+    <div class="content">
+      <p>Each skill works independently. If you already have a theme and just need copy, use the content-writer. If you want to rebuild a single page, use the page-builder. You don't have to run the full build to use any of them.</p>
+    </div>
+  </section>
+
+  <!-- Website Builder -->
+  <section id="website-builder">
+    <div class="chapter-header" style="background: var(--navy-mid);">
+      <div class="step-badge">Skill</div>
+      <h1>Website Builder</h1>
+      <p class="subtitle">The master orchestrator. Runs the full ten-stage build in one workflow.</p>
+    </div>
+    <div class="content">
+      <p>The <strong>website-builder</strong> skill is the orchestrator. Use it when you want to build a complete site from start to finish without triggering each step manually. It first asks whether you are building a brand new site or rebuilding an existing one, then runs all ten stages in order and saves progress after every confirmed stage so you can stop and resume across sessions.</p>
+      <p>It calls the other skills automatically at the right points. You don't need to trigger site-planner, seo-aeo, or any other skill separately when using a full build.</p>
+      <p><strong>Trigger phrase:</strong></p>
+      <p>"Build me a website for my business."</p>
+      <p>Claude will ask everything it needs in one go, then work through the stages step by step.</p>
+    </div>
+  </section>
+
+  <!-- Site Planner -->
+  <section id="site-planner">
+    <div class="chapter-header" style="background: var(--navy-mid);">
+      <div class="step-badge">Skill</div>
+      <h1>Site Planner</h1>
+      <p class="subtitle">Works out what pages you need, how they're structured, and what to build first.</p>
+    </div>
+    <div class="content">
+
+      <h2>What It Does</h2>
+      <p>Takes your business description and produces a complete website plan. It recommends a theme type, builds a page list tailored to your business type, creates a site map, recommends your navigation, and gives you a prioritised build order.</p>
+      <p>One clear recommendation per decision. It won't give you a list of options and ask you to choose, it will tell you what to do.</p>
+
+      <h2>How to Use It</h2>
+      <div class="say-this">"Plan my website. I run [business name]. We [what you do] for [who]. The main goal is [leads / sales / bookings / credibility]."</div>
+
+      <div class="you-get">
+        <div class="you-get-title">What you get back</div>
+        <ul>
+          <li>Theme type recommendation with a one-line reason</li>
+          <li>Page list with purpose and priority for each page</li>
+          <li>Site map showing the full structure</li>
+          <li>Main menu and footer menu recommendations</li>
+          <li>Build order, which page to tackle first, second, third</li>
+        </ul>
+      </div>
+
+      <div class="callout-neutral">
+        Save the output. The page list and build order are your reference for the rest of the build.
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Theme Scaffolder -->
+  <section id="theme-scaffolder">
+    <div class="chapter-header" style="background: var(--navy-mid);">
+      <div class="step-badge">Skill</div>
+      <h1>Theme Scaffolder</h1>
+      <p class="subtitle">Generates all the WordPress theme files you need, ready to install in Local WP.</p>
+    </div>
+    <div class="content">
+
+      <h2>What It Does</h2>
+      <p>Creates a complete WordPress theme skeleton. For block themes (the default): style.css, theme.json with your colours and fonts, page templates, header and footer, and a starter hero pattern. For classic themes: the full PHP template set.</p>
+      <p>All code follows WordPress coding standards. Colours are locked down in theme.json so they can't be accidentally changed in the editor.</p>
+
+      <h2>How to Use It</h2>
+      <div class="say-this">"Create a WordPress block theme for [business name]. Primary colour: [hex]. Secondary colour: [hex]."</div>
+
+      <p>If you don't have brand colours, just tell Claude your industry and it will suggest appropriate ones.</p>
+
+      <div class="you-get">
+        <div class="you-get-title">What you get back</div>
+        <ul>
+          <li>All theme files with complete contents, ready to copy</li>
+          <li>Installation instructions for Local WP</li>
+          <li>A list of what to customise next</li>
+        </ul>
+      </div>
+
+      <h2>Installing the Theme</h2>
+      <p>Copy the theme folder Claude creates into your Local WP themes directory:</p>
+      <ul>
+        <li><strong>Windows:</strong> <code>C:\Users\[you]\Local Sites\[site]\app\public\wp-content\themes\</code></li>
+        <li><strong>Mac:</strong> <code>~/Local Sites/[site]/app/public/wp-content/themes/</code></li>
+      </ul>
+      <p>Then go to <strong>Appearance &gt; Themes</strong> in WordPress and activate it.</p>
+
+    </div>
+  </section>
+
+  <!-- Page Builder -->
+  <section id="page-builder">
+    <div class="chapter-header" style="background: var(--navy-mid);">
+      <div class="step-badge">Skill</div>
+      <h1>Page Builder</h1>
+      <p class="subtitle">Builds individual page templates with layouts designed to convert visitors into customers.</p>
+    </div>
+    <div class="content">
+
+      <h2>What It Does</h2>
+      <p>Creates complete WordPress page templates with CRO-optimised layouts. Every page follows the same principles: clear value proposition above the fold, CTAs appearing at least twice, trust signals near conversion points, and clean mobile-first structure.</p>
+      <p>Supports block themes (HTML) and classic themes (PHP).</p>
+
+      <h2>Pages It Can Build</h2>
+      <table>
+        <thead><tr><th>Page Type</th><th>What's Included</th></tr></thead>
+        <tbody>
+          <tr><td>Homepage</td><td>Hero, social proof bar, services grid, testimonial, how it works, final CTA</td></tr>
+          <tr><td>About</td><td>Opening, story, team profiles, values, CTA</td></tr>
+          <tr><td>Services overview</td><td>Intro, service cards, differentiators, testimonial, CTA</td></tr>
+          <tr><td>Individual service</td><td>Hero, what's included, process, FAQ, testimonial, CTA</td></tr>
+          <tr><td>Contact</td><td>Form, direct contact details, location, response time</td></tr>
+          <tr><td>Landing page</td><td>Single-goal layout, no navigation, problem/solution/proof/CTA</td></tr>
+        </tbody>
+      </table>
+
+      <h2>How to Use It</h2>
+      <div class="say-this">"Build me a [homepage / about page / services page / contact page] for [brief business description]. Primary CTA: [action]."</div>
+
+      <div class="you-get">
+        <div class="you-get-title">What you get back</div>
+        <ul>
+          <li>Complete page template file (HTML block markup or PHP)</li>
+          <li>File path to copy it to</li>
+          <li>List of content you need to prepare for that page</li>
+        </ul>
+      </div>
+
+      <h2>Installing Pages in WordPress</h2>
+      <ol>
+        <li>Copy the template file into your theme's <code>templates/</code> folder</li>
+        <li>In WordPress, go to <strong>Pages &gt; Add New</strong> and create a page with the matching name</li>
+        <li>Set the template under <strong>Page Attributes &gt; Template</strong></li>
+        <li>Set your homepage under <strong>Settings &gt; Reading &gt; A static page</strong></li>
+      </ol>
+
+    </div>
+  </section>
+
+  <!-- Content Writer -->
+  <section id="content-writer">
+    <div class="chapter-header" style="background: var(--navy-mid);">
+      <div class="step-badge">Skill</div>
+      <h1>Content Writer</h1>
+      <p class="subtitle">Writes the copy for every page, then automatically runs a human voice pass.</p>
+    </div>
+    <div class="content">
+
+      <h2>What It Does</h2>
+      <p>Writes ready-to-paste website copy section by section: headlines, subheadlines, body copy, service descriptions, about text, CTA buttons, and supporting text. Every piece is focused on conversion, benefit-led headlines, copy that speaks to the customer, CTAs that drive action.</p>
+      <p>After writing the copy, it automatically passes it through the <strong>superhuman-writer</strong> to remove AI patterns and make it sound human. You get one final version, not two drafts.</p>
+
+      <h2>How to Use It</h2>
+      <div class="say-this">"Write the copy for my [page name]. We're [business description]. Target customers: [who]. Main differentiator: [what makes you different]. CTA: [action]."</div>
+
+      <p>The more context you give, the better the copy. If you have existing copy, testimonials, or rough notes, share them, Claude will build around what already works.</p>
+
+      <div class="callout">
+        <div class="callout-title">Voice DNA</div>
+        If you have a <code>voice-dna.md</code> file set up, the voice pass will write in your specific brand voice. If you also have a customer avatar or audience document, share it alongside your brief. Claude reads both and uses them to write copy that sounds like you and speaks directly to your ideal customer.
+      </div>
+
+      <div class="you-get">
+        <div class="you-get-title">What you get back</div>
+        <ul>
+          <li>Section-by-section copy with headlines, body, and CTAs clearly labelled</li>
+          <li>Word count per page</li>
+          <li>Placeholders clearly marked for anything needing your specific input</li>
+          <li>Human voice pass already applied</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Superhuman Writer -->
+  <section id="superhuman-writer">
+    <div class="chapter-header" style="background: var(--navy-mid);">
+      <div class="step-badge">Skill</div>
+      <h1>Superhuman Writer</h1>
+      <p class="subtitle">Makes any copy sound like a real person wrote it.</p>
+    </div>
+    <div class="content">
+
+      <h2>What It Does</h2>
+      <p>Takes copy and removes the patterns that make it obvious AI wrote it: even paragraph lengths, hedging language, generic transitions, banned buzzwords, and rhythm that sounds like a press release. It rebuilds the writing with varied sentence lengths, natural contractions, and human texture.</p>
+      <p>It runs automatically after the content-writer, but you can also use it on any copy at any time, emails, service descriptions, bios, social posts.</p>
+
+      <h2>Using It Standalone</h2>
+      <p>Paste copy and ask Claude to fix it:</p>
+      <div class="say-this">"Make this sound human: [paste your copy]"</div>
+      <p>Or ask it to write from scratch:</p>
+      <div class="say-this">"Write a [homepage hero / about section / service description] for [brief]. Make it sound human."</div>
+
+      <h2>With Voice DNA</h2>
+      <p>If you've set up a <code>voice-dna.md</code> file, the superhuman-writer reads it before writing. This means it won't just sound human, it will sound like <em>you</em>.</p>
+
+      <div class="callout-warning">
+        <div class="callout-title">It won't invent facts</div>
+        If copy needs a specific statistic, story, or named example that wasn't provided, the skill will ask rather than make something up. Good copy needs real details, have them ready.
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SEO / AEO -->
+  <section id="seo-aeo">
+    <div class="chapter-header" style="background: var(--navy-mid);">
+      <div class="step-badge">Skill</div>
+      <h1>SEO / AEO Optimiser</h1>
+      <p class="subtitle">Keyword planning before you write, and on-page scoring after.</p>
+    </div>
+    <div class="content">
+
+      <h2>What It Does</h2>
+      <p>This skill runs at two points in the build. Before writing, it maps keywords to every page so the content-writer knows exactly what to target. After writing, it audits every page for SEO and AEO quality, scores them, generates schema markup, and tells you what to fix.</p>
+
+      <p>AEO, Answer Engine Optimisation, makes your pages readable by AI search tools like Google AI Overviews, ChatGPT, and Perplexity. Same content, structured so it can be extracted and cited.</p>
+
+      <h2>Mode 0, Site Structure Analysis (after site plan)</h2>
+      <p>Run this immediately after the site-planner confirms your page list. Before a single page is built, Claude reviews the proposed structure for SEO effectiveness.</p>
+
+      <div class="say-this">"Analyse my site plan for SEO. Here's the plan: [paste site-planner output]"</div>
+
+      <div class="you-get">
+        <div class="you-get-title">What you get back</div>
+        <ul>
+          <li>Topical authority assessment, whether the page set is deep enough to rank</li>
+          <li>Page hierarchy check, any orphaned or hard-to-reach pages</li>
+          <li>Internal linking map, which pages should link to which</li>
+          <li>URL slug recommendations for every page</li>
+          <li>Missing pages flagged by priority, pages that would help SEO but aren't in the plan</li>
+          <li>A one-paragraph verdict on whether the structure is ready to build</li>
+        </ul>
+      </div>
+
+      <div class="callout">
+        <div class="callout-title">Fix structure before you build</div>
+        It's much easier to add or restructure pages at this stage than after the theme and templates are built. Take the recommendations seriously before moving to Stage 3.
+      </div>
+
+      <h2>Mode 1, Keyword Planning (before copy)</h2>
+      <p>Run this after the site plan and before writing any copy.</p>
+
+      <div class="say-this">"Keyword research for my site. Here are my pages: [list from site plan]."</div>
+
+      <div class="you-get">
+        <div class="you-get-title">What you get back</div>
+        <ul>
+          <li>Primary keyword for every page</li>
+          <li>Intent classification (informational, commercial, transactional, navigational)</li>
+          <li>3-5 supporting keywords per page</li>
+          <li>Recommended content format based on what's ranking</li>
+        </ul>
+      </div>
+
+      <h2>Mode 2, On-Page Audit (after copy)</h2>
+      <p>Run this after the content-writer and superhuman-writer have finished. Pass in the finished copy for each page.</p>
+
+      <div class="say-this">"SEO audit my copy. [paste or reference the copy files]"</div>
+
+      <div class="you-get">
+        <div class="you-get-title">What you get back</div>
+        <ul>
+          <li>Score out of 10 for every page (target: 8/10 minimum before launch)</li>
+          <li>Fixes required and fixes recommended for each page</li>
+          <li>Complete JSON-LD schema markup for each page type</li>
+          <li>FAQ section assessment and improvements</li>
+        </ul>
+      </div>
+
+      <h2>Schema Markup</h2>
+      <p>The skill generates the correct schema type for each page automatically:</p>
+      <table>
+        <thead><tr><th>Page Type</th><th>Schema Generated</th></tr></thead>
+        <tbody>
+          <tr><td>Homepage</td><td>Organization + WebSite</td></tr>
+          <tr><td>Service page</td><td>Service (or LocalBusiness)</td></tr>
+          <tr><td>About page</td><td>Organization + Person</td></tr>
+          <tr><td>Contact page</td><td>LocalBusiness</td></tr>
+          <tr><td>Blog / guide</td><td>BlogPosting + FAQPage</td></tr>
+          <tr><td>Landing page</td><td>Service + Offer</td></tr>
+        </tbody>
+      </table>
+      <p>Paste the JSON-LD snippets into the <code>&lt;head&gt;</code> of each page in WordPress.</p>
+
+      <div class="callout-neutral">
+        <div class="callout-title">No invented data</div>
+        The skill will not invent keyword volumes or difficulty scores. It assesses what it can from your copy and context. For volume data, use Google Keyword Planner or a tool like Ahrefs alongside it.
+      </div>
+
+    </div>
+  </section>
+
+  <!-- WordPress Security Audit -->
+  <section id="wordpress-security-audit">
+    <div class="chapter-header" style="background: var(--navy-mid);">
+      <div class="step-badge">Skill</div>
+      <h1>WordPress Security Audit</h1>
+      <p class="subtitle">Scans your theme code for vulnerabilities before upload. Runs automatically at Stage 9.</p>
+    </div>
+    <div class="content">
+      <p>The <strong>wordpress-security-audit</strong> skill scans the theme code Claude generated and produces a severity-rated report with exact fixes. It runs at Stage 9 of the full build, before the launch checklist.</p>
+      <p>It checks three areas:</p>
+      <ul>
+        <li><strong>JavaScript</strong>: unsafe DOM writes, XSS vectors, unvalidated URL parameters</li>
+        <li><strong>PHP theme files</strong>: SQL injection, XSS, CSRF, missing nonces, dangerous functions, ABSPATH guards</li>
+        <li><strong>Theme directory</strong>: no .sql files, backup folders, or log files left in the theme</li>
+      </ul>
+      <p>All Critical and High findings must be resolved before uploading to live hosting.</p>
+      <p><strong>Trigger phrase (standalone use):</strong></p>
+      <p>"Security audit my WordPress theme. The theme is at [path]."</p>
+
+      <h2 style="margin-top: 2rem;">Production Audit (After Going Live)</h2>
+      <p>The <strong>wordpress-production-audit</strong> skill handles server-level checks that only apply once your site is on live hosting. Run it after migrating from Local WP.</p>
+      <p>It checks:</p>
+      <ul>
+        <li><strong>wp-config.php</strong>: weak credentials, debug settings, secret keys, table prefix</li>
+        <li><strong>.htaccess</strong>: git exposure, uploads PHP execution, security headers, CSP</li>
+        <li><strong>Exposed files</strong>: wp-config.php, .env, debug.log, .git/config must return 403/404</li>
+        <li><strong>Meta security</strong>: user enumeration, admin username, hardcoded credentials</li>
+      </ul>
+      <p><strong>Trigger phrase:</strong></p>
+      <p>"Run a production security audit on my live site."</p>
+    </div>
+  </section>
+
+  <!-- Launch Checklist -->
+  <section id="launch-checklist">
+    <div class="chapter-header" style="background: var(--navy-mid);">
+      <div class="step-badge">Skill</div>
+      <h1>Launch Checklist</h1>
+      <p class="subtitle">Audits the site before you go live and tells you exactly what to fix.</p>
+    </div>
+    <div class="content">
+
+      <h2>What It Does</h2>
+      <p>Produces a personalised pre-launch checklist based on your site type, page list, and primary goal. Covers eight areas: content completeness, SEO basics, performance, mobile responsiveness, conversion readiness, security, legal compliance, and go-live technical steps.</p>
+      <p>Every item is tagged so you know what to prioritise:</p>
+      <table>
+        <thead><tr><th>Tag</th><th>What It Means</th></tr></thead>
+        <tbody>
+          <tr><td><strong>BLOCKER</strong></td><td>Fix before launch. The site will break, lose traffic, or look unprofessional without it.</td></tr>
+          <tr><td><strong>IMPORTANT</strong></td><td>Fix before or shortly after launch. Affects SEO, conversions, or user experience.</td></tr>
+          <tr><td><strong>NICE-TO-HAVE</strong></td><td>Do when you get time. No immediate consequence if it waits.</td></tr>
+        </tbody>
+      </table>
+
+      <h2>How to Use It</h2>
+      <div class="say-this">"Give me a pre-launch checklist. It's a [business type] site with these pages: [list them]. Primary goal: [leads / sales / bookings]."</div>
+
+      <div class="you-get">
+        <div class="you-get-title">What you get back</div>
+        <ul>
+          <li>Full checklist grouped by BLOCKER / IMPORTANT / NICE-TO-HAVE</li>
+          <li>Brief fix guidance for each item</li>
+          <li>Recommended plugins list</li>
+          <li>Post-launch action list</li>
+        </ul>
+      </div>
+
+      <div class="callout-warning">
+        <div class="callout-title">Most common launch mistake</div>
+        WordPress has a setting called "Discourage search engines from indexing this site" that's sometimes turned on during development. The checklist will flag this as a BLOCKER. Check it under <strong>Settings &gt; Reading</strong> before going live.
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Recommended Plugins -->
+  <section id="plugins">
+    <div class="chapter-header" style="background: var(--navy-mid);">
+      <div class="step-badge">Reference</div>
+      <h1>Recommended Plugins</h1>
+      <p class="subtitle">The plugin types every WordPress site needs, with a couple of options per category.</p>
+    </div>
+    <div class="content">
+
+      <p>WordPress core handles the basics. Plugins cover the rest. Install only what you need. Every plugin adds load time, and most sites only need five or six.</p>
+
+      <table>
+        <thead>
+          <tr><th>Type</th><th>Why You Need It</th><th>Options</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>SEO</strong></td>
+            <td>Title tags, meta descriptions, schema markup, XML sitemaps</td>
+            <td>Rank Math (free), Yoast SEO (free)</td>
+          </tr>
+          <tr>
+            <td><strong>Caching</strong></td>
+            <td>Speeds up the site for real visitors</td>
+            <td>WP Rocket (paid), LiteSpeed Cache (free), W3 Total Cache (free)</td>
+          </tr>
+          <tr>
+            <td><strong>Security</strong></td>
+            <td>Blocks brute force, monitors file changes, protects login</td>
+            <td>Solid Security (free), Wordfence (free)</td>
+          </tr>
+          <tr>
+            <td><strong>Forms</strong></td>
+            <td>Contact forms, lead capture, enquiry forms</td>
+            <td>WPForms (free/paid), Contact Form 7 (free), Fluent Forms (free/paid)</td>
+          </tr>
+          <tr>
+            <td><strong>Backups</strong></td>
+            <td>Automated off-site backups before anything goes wrong</td>
+            <td>UpdraftPlus (free/paid), BackWPup (free)</td>
+          </tr>
+          <tr>
+            <td><strong>Image optimisation</strong></td>
+            <td>Compresses images automatically on upload</td>
+            <td>Smush (free/paid), ShortPixel (paid), Imagify (free/paid)</td>
+          </tr>
+          <tr>
+            <td><strong>Cookie consent</strong></td>
+            <td>Legal requirement in UK and EU if using analytics or tracking</td>
+            <td>CookieYes (free/paid), Complianz (free/paid)</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="callout-neutral">
+        <div class="callout-title">Start lean</div>
+        A simple brochure site needs SEO, security, backups, a forms plugin, and cookie consent. That's five plugins. Add caching and image optimisation before you go live. That's seven. Anything beyond that should have a clear reason.
+      </div>
+
+      <p>The launch checklist will flag which types apply to your site and remind you to install them before going live.</p>
+
+    </div>
+  </section>
+
+  <!-- Step 5: Go Live -->
+  <hr class="chapter-divider">
+  <section id="go-live">
+    <div class="chapter-header">
+      <div class="step-badge">Step 5</div>
+      <h1>Go Live</h1>
+      <p class="subtitle">Migrate from Local WP to hosting and publish your site.</p>
+    </div>
+    <div class="content">
+
+      <h2>What You'll Need</h2>
+      <ul>
+        <li><strong>A domain name</strong>, buy from Namecheap, Cloudflare, or your preferred registrar</li>
+        <li><strong>WordPress hosting</strong>, Cloudways (best performance), SiteGround (beginner-friendly), or Krystal (UK-based) all work well</li>
+      </ul>
+
+      <h2>Migrating from Local WP</h2>
+
+      <div class="step">
+        <div class="step-number">1</div>
+        <div class="step-content">
+          <h3>Export from Local WP</h3>
+          <p>Right-click your site in Local WP and choose <strong>Export</strong>. This creates a ZIP file of your entire site.</p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-number">2</div>
+        <div class="step-content">
+          <h3>Set up hosting</h3>
+          <p>Create a hosting account and install WordPress. Your host will have a one-click WordPress installer.</p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-number">3</div>
+        <div class="step-content">
+          <h3>Import your site</h3>
+          <p>Install <strong>UpdraftPlus</strong> (free) or <strong>Duplicator</strong> on your new hosting. Use it to import the ZIP file from step 1. Note: All-in-One WP Migration requires a paid upgrade to import.</p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-number">4</div>
+        <div class="step-content">
+          <h3>Update your domain</h3>
+          <p>Point your domain's DNS to your hosting. Your hosting provider will give you the nameservers to use. DNS changes can take up to 48 hours.</p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-number">5</div>
+        <div class="step-content">
+          <h3>Install SSL</h3>
+          <p>Most hosts install SSL automatically. If not, use Let's Encrypt (free) via your hosting control panel.</p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-number">6</div>
+        <div class="step-content">
+          <h3>Update URLs</h3>
+          <p>Run a search-and-replace to update all references from your local URL (e.g. <code>mysite.local</code>) to your live domain (e.g. <code>mysite.com</code>). Use the <strong>Better Search Replace</strong> plugin.</p>
+        </div>
+      </div>
+
+      <h2>After Going Live</h2>
+      <ul>
+        <li>Test your contact form on the live site</li>
+        <li>Check the site on your phone</li>
+        <li>Submit your sitemap to Google Search Console at <code>yourdomain.com/sitemap.xml</code></li>
+        <li>Set up automatic backups (most hosts provide this, or use UpdraftPlus)</li>
+        <li>Check for any 404 errors in the first week</li>
+        <li>Push your theme folder to a private GitHub repository. If something breaks after a plugin update or edit, you can restore from there.</li>
+      </ul>
+
+      <div class="callout-success">
+        <div class="callout-title">You're live</div>
+        A custom WordPress site, built with AI, in a fraction of the time and cost of hiring a developer. You own every file. No lock-in. No monthly platform fees.
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Get Help -->
+  <!-- Troubleshooting -->
+  <hr class="chapter-divider">
+  <section id="troubleshooting">
+    <div class="chapter-header">
+      <div class="step-badge">Reference</div>
+      <h1>Troubleshooting</h1>
+      <p class="subtitle">The most common issues and how to fix them.</p>
+    </div>
+    <div class="content">
+
+      <h2>Theme not showing in Local WP</h2>
+      <p>The theme folder must be copied into the correct location and contain a valid <code>style.css</code> with a theme header. Check the path:</p>
+      <ul>
+        <li><strong>Windows:</strong> <code>C:\Users\[you]\Local Sites\[site]\app\public\wp-content\themes\</code></li>
+        <li><strong>Mac:</strong> <code>~/Local Sites/[site]/app/public/wp-content/themes/</code></li>
+      </ul>
+      <p>After copying, go to <strong>Appearance &gt; Themes</strong> in WordPress and click Activate. If the theme still doesn't appear, check that the folder name contains no spaces and that <code>style.css</code> exists in the root of the theme folder.</p>
+
+      <h2>Contact form not sending emails</h2>
+      <p>Local WP does not send real emails by default. Install the <strong>WP Mail SMTP</strong> plugin and connect it to a mail provider (Gmail, Mailgun, or similar) to test form submissions locally. On your live site, most hosting providers handle email delivery, but WP Mail SMTP is still recommended for reliability.</p>
+
+      <h2>Search engines blocked after launch</h2>
+      <p>WordPress has a setting that blocks search engines, often turned on during development. Before going live, go to <strong>Settings &gt; Reading</strong> and make sure "Discourage search engines from indexing this site" is unchecked. The launch checklist will flag this as a BLOCKER.</p>
+
+      <h2>Page template not appearing in WordPress</h2>
+      <p>For block themes, page templates must be in the <code>templates/</code> folder inside your theme. For classic themes, they must be in the theme root and contain the correct template header comment. After adding the file, go to the page in WordPress, look under <strong>Page Attributes</strong> and select the template from the dropdown.</p>
+
+      <h2>URLs still showing the local domain after migration</h2>
+      <p>When you migrate from Local WP to live hosting, all database references to <code>yoursite.local</code> need updating to your live domain. Use the <strong>Better Search Replace</strong> plugin to find and replace the old URL across the entire database. Run it in dry-run mode first to preview the changes.</p>
+
+      <h2>Something Claude generated looks wrong</h2>
+      <p>See the section below on correcting the build mid-way.</p>
+
+      <h2>Course-Correcting Mid-Build</h2>
+      <p>You don't need to restart if something isn't right. Claude saves progress to <code>website-build.md</code> after every stage, so you can go back and fix specific parts without losing everything else.</p>
+
+      <table>
+        <thead><tr><th>Problem</th><th>What to Say</th></tr></thead>
+        <tbody>
+          <tr>
+            <td>Wrong pages in the site plan</td>
+            <td>"Go back to the site plan. I want to add [page] and remove [page]."</td>
+          </tr>
+          <tr>
+            <td>Theme colours or fonts are off</td>
+            <td>"Regenerate the theme with these colours: [hex codes]."</td>
+          </tr>
+          <tr>
+            <td>A page template needs a different layout</td>
+            <td>"Rebuild the [page name] template. I want [describe the change]."</td>
+          </tr>
+          <tr>
+            <td>Copy for one page isn't right</td>
+            <td>"Rewrite the [page name] copy. [Describe what's wrong or what you want instead]."</td>
+          </tr>
+          <tr>
+            <td>The voice pass didn't sound right</td>
+            <td>"Run the voice pass again on [page name] copy. [Describe the tone issue]."</td>
+          </tr>
+          <tr>
+            <td>A page scored below 8 in the SEO audit</td>
+            <td>"Fix the SEO issues on [page name] and show me the updated copy."</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="callout">
+        <div class="callout-title">You're always in control</div>
+        Claude will not move to the next stage without your confirmation. If something needs changing, say so before approving the stage. You can also go back to any previous stage at any point.
+      </div>
+
+    </div>
+  </section>
+
+  <hr class="chapter-divider">
+  <section id="help">
+    <div class="chapter-header">
+      <h1>Need Help?</h1>
+      <p class="subtitle">Expert support for your website and AI systems.</p>
+    </div>
+    <div class="content">
+      <p>This pack was built by Zara Imrie at Clever Operators. If you want to see more of her work, head to her site.</p>
+
+      <p><strong>Zara Imrie</strong><br>
+      Founder, Clever Operators<br>
+      <a href="https://cleveroperators.com">cleveroperators.com</a></p>
+    </div>
+  </section>
+
+  <!-- Terms -->
+  <hr class="chapter-divider">
+  <section id="terms">
+    <div class="chapter-header">
+      <h1>Licence</h1>
+      <p class="subtitle">Shared free with the Ads to AI community.</p>
+    </div>
+    <div class="content">
+
+      <h2>How you can use it</h2>
+      <p>This pack was built by Zara Imrie at Clever Operators and shared free with the Ads to AI community. Use the ten skills to build websites for your own business or your clients. Please keep Zara's credit if you pass it on.</p>
+
+      <h2>Review before you publish</h2>
+      <p>The pack provides tools and guidance. There's no guarantee that generated code, copy, or checklists will be error-free or achieve any specific business outcome. Review all outputs and test in Local WP before you go live.</p>
+
+      <h2>AI costs</h2>
+      <p>This pack uses Claude Code, which runs on your own Anthropic account. You are responsible for all API costs. Set a spending limit in your Anthropic account before extended use.</p>
+
+      <h2>Provided as-is</h2>
+      <p>The pack is provided as-is, with no warranty. Once your site is live, its content, accuracy, and legal compliance are your responsibility. Back up your Local WP site as you go.</p>
+
+      <p style="margin-top: 24px; color: var(--ink-muted); font-size: 9.5pt;">Built by Zara Imrie, Clever Operators (cleveroperators.com).</p>
+
+    </div>
+  </section>
+
+  <div class="page-footer">
+    <p>Built with Claude Code and the Website Builder Skill Pack by <a href="https://cleveroperators.com">Clever Operators</a></p>
+  </div>
+
+</main>
+
+
+<script>
+  (function () {
+    var navLinks = Array.from(document.querySelectorAll('.sidebar nav a'));
+    var sections = [];
+
+    navLinks.forEach(function (link) {
+      var href = link.getAttribute('href');
+      if (href && href.startsWith('#')) {
+        var target = document.querySelector(href);
+        if (target) sections.push({ link: link, target: target });
+      }
+    });
+
+    function setActive(activeLink) {
+      navLinks.forEach(function (l) { l.classList.remove('active'); });
+      if (activeLink) activeLink.classList.add('active');
+    }
+
+    // Click: set active immediately
+    navLinks.forEach(function (link) {
+      link.addEventListener('click', function () {
+        setActive(link);
+      });
+    });
+
+    // Scroll: update active based on which section is nearest the top
+    function onScroll() {
+      var scrollY = window.scrollY || window.pageYOffset;
+      var best = null;
+      sections.forEach(function (s) {
+        if (s.target.offsetTop - 80 <= scrollY) {
+          best = s;
+        }
+      });
+      if (best) setActive(best.link);
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll(); // set on load
+  })();
+</script>
+</body>
+</html>
+

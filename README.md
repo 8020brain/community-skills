@@ -18,6 +18,7 @@ From your brain, run:
 | `bucket-list` | Jeff Martyka | Track bucket list experiences, festivals, and natural phenomena with web enrichment |
 | `e2e-qa-testing` | Paul Saunders | Automated E2E QA testing for Next.js apps using Playwright |
 | `mutation-safety` | Kurt Henninger | Two-step approval for Google Ads mutations and destructive Sheets operations |
+| `website-builder-pack` | Zara Imrie | Ten skills to build a launch-ready WordPress site with Claude Code and Local WP: planning, theme, pages, copy, SEO/AEO, security + production audits, launch checklist |
 
 ## Contributing a Skill
 

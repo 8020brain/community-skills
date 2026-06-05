@@ -49,6 +49,12 @@
       "description": "Homeowner sinking-fund planner. Tracks major home systems with install dates, lifespans, and replacement costs. Calculates weekly savings split across HYSA + brokerage.",
       "source": "./home-repair-funds",
       "author": { "name": "Jeff Martyka" }
+    },
+    {
+      "name": "website-builder-pack",
+      "description": "Ten skills that take you from a blank folder to a launch-ready WordPress site with Claude Code and Local WP. Site planning, theme scaffolding, page building, copywriting, SEO/AEO, security and production audits, and a pre-launch checklist.",
+      "source": "./website-builder-pack",
+      "author": { "name": "Zara Imrie" }
     }
   ]
 }
