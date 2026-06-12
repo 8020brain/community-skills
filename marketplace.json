@@ -1,7 +1,23 @@
 {
-  "version": "1.6.0",
-  "updated": "2026-06-05",
+  "version": "1.7.0",
+  "updated": "2026-06-13",
   "skills": [
+    {
+      "name": "brain-full-audit",
+      "displayName": "Brain Full Audit",
+      "description": "Run a full audit of your brain build across eight dimensions: security, cost and token use, efficiency and redundancy, structure and hygiene, reliability, data and privacy, rule compliance, and design quality. Produces a scored RAG report with a token-weight table and prioritised fixes. Report-only: nothing is changed until you approve findings by ID.",
+      "contributor": "Zara Imrie",
+      "version": "1.0.0",
+      "tags": ["Brain", "Audit", "Maintenance", "Security"]
+    },
+    {
+      "name": "sellable-ada-audit",
+      "displayName": "ADA Website Audit",
+      "description": "Audit a website for ADA compliance against WCAG 2.1 AA, the standard US courts use for ADA Title III claims. Automated static checks (plain Node, no dependencies) plus screenshot and HTML review, scored across six categories with a legal risk level and developer-ready fixes. Includes a printable client report template, so it is built to sell as a service.",
+      "contributor": "Zara Imrie",
+      "version": "1.0.0",
+      "tags": ["ADA", "Accessibility", "WCAG", "Sellable", "Audit"]
+    },
     {
       "name": "threshold-recommender",
       "displayName": "Threshold Recommender",

@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Website Accessibility Audit | [CLIENT_NAME]</title>
+<style>
+/* ADA Audit Report design system (self-contained). Set --accent and --accent-2 to your brand colours. */
+:root {
+    --ink: #1a1a1a;
+    --ink-light: #4a4a4a;
+    --ink-muted: #6e7681;
+    --paper: #ffffff;
+    --paper-warm: #faf9f7;
+    --paper-cool: #f4f6f8;
+    --accent: #2d3748;          /* primary brand colour */
+    --accent-light: #e8edf4;
+    --accent-cyan: #4a90d9;     /* secondary brand colour */
+    --score-excellent: #1a7f37;
+    --score-excellent-bg: #dafbe1;
+    --score-good: #0969da;
+    --score-good-bg: #ddf4ff;
+    --score-fair: #bf8700;
+    --score-fair-bg: #fff8c5;
+    --score-poor: #cf222e;
+    --score-poor-bg: #ffebe9;
+    --border: #d8d8d4;
+    --border-light: #e8e8e4;
+    --font-heading: 'Trebuchet MS', 'Arial', sans-serif;
+    --font-body: 'Georgia', 'Times New Roman', serif;
+    --font-mono: 'Consolas', 'Monaco', monospace;
+}
+@page { margin: 0.6in; size: letter; }
+* { box-sizing: border-box; }
+body { font-family: var(--font-body); font-size: 10.5pt; line-height: 1.55; color: var(--ink); background: var(--paper); margin: 0; padding: 0.5in; max-width: 7.5in; }
+h1, h2, h3, h4 { font-family: var(--font-heading); color: var(--ink); margin-top: 0; line-height: 1.2; }
+h1 { font-size: 26pt; font-weight: 700; margin-bottom: 0.15in; }
+h2 { font-size: 14pt; font-weight: 600; margin-top: 0.3in; margin-bottom: 0.12in; padding-bottom: 0.06in; border-bottom: 1px solid var(--border); }
+h2::after { content: ''; display: block; width: 0.5in; height: 2px; background: var(--accent-cyan); margin-top: 0.06in; }
+h3 { font-size: 11pt; font-weight: 600; margin-top: 0.2in; margin-bottom: 0.08in; }
+p { margin: 0 0 0.1in 0; }
+code { font-family: var(--font-mono); font-size: 8.5pt; background: var(--paper-cool); padding: 1px 4px; border-radius: 2px; }
+
+/* Cover */
+.cover { page-break-after: always; padding: 1.5in 0 0.5in 0; min-height: 7in; }
+.cover-brand { font-family: var(--font-heading); font-size: 9pt; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: var(--accent); margin-bottom: 0.3in; }
+.cover-brand span { color: var(--accent-cyan); }
+.cover h1 { font-size: 32pt; margin-bottom: 0.1in; }
+.cover .subtitle { font-family: var(--font-heading); font-size: 13pt; color: var(--ink-light); margin-bottom: 0.5in; }
+.cover-meta { display: grid; grid-template-columns: auto 1fr; gap: 0.08in 0.2in; font-size: 10pt; color: var(--ink-muted); margin-top: 0.4in; }
+.cover-meta dt { font-family: var(--font-heading); font-weight: 600; text-transform: uppercase; font-size: 8pt; letter-spacing: 0.5px; }
+.cover-meta dd { margin: 0; }
+
+/* Score hero */
+.score-hero { display: flex; align-items: flex-start; gap: 0.3in; padding: 0.25in; background: var(--paper-warm); border-left: 4px solid var(--accent); margin: 0.2in 0; page-break-inside: avoid; }
+.score-circle { width: 1.1in; height: 1.1in; border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; flex-shrink: 0; color: white; }
+.score-circle.grade-a { background: var(--score-excellent); }
+.score-circle.grade-b { background: var(--score-good); }
+.score-circle.grade-c { background: var(--score-fair); }
+.score-circle.grade-d, .score-circle.grade-f { background: var(--score-poor); }
+.score-number { font-family: var(--font-heading); font-size: 28pt; font-weight: 700; line-height: 1; }
+.score-total { font-family: var(--font-heading); font-size: 10pt; opacity: 0.9; }
+.score-summary { flex: 1; }
+.score-grade { font-family: var(--font-heading); font-size: 11pt; font-weight: 600; margin-bottom: 0.08in; }
+.score-text { font-size: 10pt; color: var(--ink-light); line-height: 1.5; }
+
+/* Legal risk banner */
+.risk-banner { display: flex; align-items: center; gap: 0.2in; padding: 0.15in 0.2in; margin: 0.15in 0; page-break-inside: avoid; border-left: 4px solid; }
+.risk-banner.risk-low { background: var(--score-excellent-bg); border-color: var(--score-excellent); }
+.risk-banner.risk-moderate { background: var(--score-fair-bg); border-color: var(--score-fair); }
+.risk-banner.risk-high, .risk-banner.risk-critical { background: var(--score-poor-bg); border-color: var(--score-poor); }
+.risk-level { font-family: var(--font-heading); font-size: 14pt; font-weight: 700; white-space: nowrap; }
+.risk-banner.risk-low .risk-level { color: var(--score-excellent); }
+.risk-banner.risk-moderate .risk-level { color: var(--score-fair); }
+.risk-banner.risk-high .risk-level, .risk-banner.risk-critical .risk-level { color: var(--score-poor); }
+.risk-text { font-size: 9.5pt; color: var(--ink-light); }
+.risk-label { font-family: var(--font-heading); font-size: 8pt; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; color: var(--ink-muted); display: block; }
+
+/* Score table */
+.score-table { width: 100%; border-collapse: collapse; font-size: 9pt; margin: 0.15in 0; }
+.score-table th { font-family: var(--font-heading); font-weight: 600; text-align: left; padding: 0.08in 0.1in; background: var(--accent); color: white; font-size: 8pt; text-transform: uppercase; letter-spacing: 0.3px; }
+.score-table td { padding: 0.08in 0.1in; border-bottom: 1px solid var(--border); vertical-align: middle; }
+.score-table tr:last-child td { border-bottom: 2px solid var(--accent); font-weight: 600; background: var(--paper-warm); }
+.score-bar { height: 6px; background: var(--border-light); border-radius: 3px; overflow: hidden; min-width: 1in; }
+.score-bar-fill { height: 100%; border-radius: 3px; }
+.score-bar-fill.excellent { background: var(--score-excellent); }
+.score-bar-fill.good { background: var(--score-good); }
+.score-bar-fill.fair { background: var(--score-fair); }
+.score-bar-fill.poor { background: var(--score-poor); }
+
+/* Severity / WCAG tags */
+.tag { font-family: var(--font-heading); font-size: 7.5pt; font-weight: 600; padding: 0.02in 0.08in; border-radius: 2px; text-transform: uppercase; letter-spacing: 0.3px; white-space: nowrap; }
+.tag-critical { background: var(--score-poor); color: white; }
+.tag-serious { background: var(--score-poor-bg); color: var(--score-poor); }
+.tag-moderate { background: var(--score-fair-bg); color: var(--score-fair); }
+.tag-minor { background: var(--paper-cool); color: var(--ink-muted); }
+.tag-wcag { background: var(--accent-light); color: var(--accent); }
+.tag-legal-high { background: var(--score-poor); color: white; }
+.tag-legal-medium { background: var(--score-fair-bg); color: var(--score-fair); }
+.tag-legal-low { background: var(--paper-cool); color: var(--ink-muted); }
+.effort-tag { font-family: var(--font-heading); font-size: 7.5pt; font-weight: 600; padding: 0.02in 0.08in; border-radius: 2px; }
+.effort-easy { background: var(--score-excellent-bg); color: var(--score-excellent); }
+.effort-medium { background: var(--score-fair-bg); color: var(--score-fair); }
+.effort-hard { background: var(--score-poor-bg); color: var(--score-poor); }
+
+/* Priority fixes */
+.fix-group-label { font-family: var(--font-heading); font-size: 10pt; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin: 0.25in 0 0.05in 0; }
+.fix-group-label.now { color: var(--score-poor); }
+.fix-group-label.soon { color: var(--score-fair); }
+.fix-group-label.later { color: var(--ink-muted); }
+.priority-fix { display: grid; grid-template-columns: 0.35in 1fr; gap: 0.12in; padding: 0.15in 0; border-bottom: 1px solid var(--border-light); page-break-inside: avoid; }
+.priority-fix:last-child { border-bottom: none; }
+.priority-number { width: 0.35in; height: 0.35in; background: var(--accent); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: var(--font-heading); font-size: 12pt; font-weight: 700; flex-shrink: 0; }
+.priority-content h4 { margin: 0 0 0.06in 0; font-size: 10.5pt; }
+.priority-content p { font-size: 9pt; color: var(--ink-light); margin: 0 0 0.06in 0; }
+.priority-meta { display: flex; gap: 0.1in; font-size: 8pt; flex-wrap: wrap; align-items: center; }
+.fix-how { background: var(--paper-cool); padding: 0.08in 0.1in; font-size: 8.5pt; margin-top: 0.05in; border-left: 2px solid var(--accent-cyan); }
+
+/* Category detail */
+.category-block { margin: 0.2in 0; page-break-inside: avoid; }
+.category-header { display: flex; justify-content: space-between; align-items: center; padding: 0.1in 0.12in; background: var(--accent); color: white; }
+.category-header h3 { margin: 0; font-size: 10pt; color: white; }
+.category-score-badge { font-family: var(--font-heading); font-size: 10pt; font-weight: 700; color: var(--accent-cyan); }
+.category-items { border: 1px solid var(--border); border-top: none; }
+.criterion-row { display: grid; grid-template-columns: 1fr 0.6in; gap: 0.1in; padding: 0.1in 0.12in; border-bottom: 1px solid var(--border-light); align-items: center; }
+.criterion-row:last-child { border-bottom: none; }
+.criterion-name { font-family: var(--font-heading); font-size: 9pt; font-weight: 600; }
+.criterion-score { text-align: center; font-family: var(--font-heading); font-size: 8.5pt; font-weight: 600; padding: 0.03in 0.06in; border-radius: 2px; }
+.criterion-score.pass { background: var(--score-excellent-bg); color: var(--score-excellent); }
+.criterion-score.partial { background: var(--score-fair-bg); color: var(--score-fair); }
+.criterion-score.fail { background: var(--score-poor-bg); color: var(--score-poor); }
+.criterion-score.untested { background: var(--paper-cool); color: var(--ink-muted); }
+.criterion-detail { grid-column: 1 / -1; font-size: 9pt; color: var(--ink-light); padding-top: 0.06in; border-top: 1px dashed var(--border-light); margin-top: 0.06in; }
+
+/* Screenshots */
+.screenshot-grid { display: grid; grid-template-columns: 1.6fr 1fr; gap: 0.2in; margin: 0.2in 0; }
+.screenshot-box { border: 1px solid var(--border); page-break-inside: avoid; }
+.screenshot-box h4 { margin: 0; padding: 0.08in 0.12in; background: var(--accent); color: white; font-size: 9pt; }
+.screenshot-container { padding: 0.1in; background: var(--paper-cool); }
+.screenshot-img { width: 100%; height: auto; display: block; border: 1px solid var(--border-light); }
+.screenshot-img.screenshot-mobile { max-width: 200px; margin: 0 auto; }
+
+/* Callouts, roadmap, general */
+.callout { background: var(--paper-warm); border-left: 3px solid var(--accent-cyan); padding: 0.12in 0.15in; margin: 0.12in 0; page-break-inside: avoid; }
+.callout-label { font-family: var(--font-heading); font-size: 8pt; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; color: var(--accent); margin-bottom: 0.06in; }
+.rec-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.12in; margin: 0.15in 0; }
+.rec-box { padding: 0.12in; background: var(--paper-warm); border-top: 3px solid var(--accent); }
+.rec-box h4 { font-size: 9pt; margin: 0 0 0.08in 0; color: var(--accent); }
+.rec-box ul { margin: 0; padding-left: 0.15in; font-size: 8.5pt; }
+table { width: 100%; border-collapse: collapse; font-size: 9pt; margin: 0.12in 0; }
+thead { background: var(--accent); color: white; }
+th { font-family: var(--font-heading); font-weight: 600; text-align: left; padding: 0.08in 0.1in; font-size: 8pt; text-transform: uppercase; letter-spacing: 0.3px; }
+td { padding: 0.06in 0.1in; border-bottom: 1px solid var(--border); }
+ul, ol { margin: 0.08in 0; padding-left: 0.25in; }
+li { margin-bottom: 0.04in; }
+.section { page-break-before: always; }
+.section:first-of-type { page-break-before: auto; }
+.no-break { page-break-inside: avoid; }
+.report-footer { margin-top: 0.3in; padding-top: 0.15in; border-top: 1px solid var(--border); font-size: 8pt; color: var(--ink-muted); text-align: center; }
+.disclaimer { background: var(--paper-cool); padding: 0.12in 0.15in; margin: 0.2in 0; font-size: 8.5pt; color: var(--ink-light); border: 1px solid var(--border); }
+@media print { body { padding: 0; } a { text-decoration: none; color: var(--ink); } }
+</style>
+</head>
+<body>
+
+<!-- ============ COVER ============ -->
+<div class="cover">
+    <div class="cover-brand">[PREPARED_BY]</div>
+    <h1>Website Accessibility Audit</h1>
+    <div class="subtitle">ADA Compliance Review against WCAG 2.1 AA</div>
+    <dl class="cover-meta">
+        <dt>Client</dt><dd>[CLIENT_NAME]</dd>
+        <dt>Website</dt><dd>[SITE_URL]</dd>
+        <dt>Pages Audited</dt><dd>[PAGES_AUDITED]</dd>
+        <dt>Date</dt><dd>[AUDIT_DATE]</dd>
+        <dt>Prepared By</dt><dd>[PREPARED_BY]</dd>
+    </dl>
+</div>
+
+<!-- ============ EXECUTIVE SUMMARY ============ -->
+<div class="section">
+    <h2>Executive Summary</h2>
+    <div class="score-hero">
+        <div class="score-circle grade-[GRADE_LOWER]">
+            <div class="score-number">[SCORE]</div>
+            <div class="score-total">/ 100</div>
+        </div>
+        <div class="score-summary">
+            <div class="score-grade">Grade [GRADE]: [GRADE_LABEL]</div>
+            <div class="score-text">[EXEC_SUMMARY_VERDICT]</div>
+        </div>
+    </div>
+    <div class="risk-banner risk-[RISK_LOWER]">
+        <div><span class="risk-label">Legal Risk</span><span class="risk-level">[RISK_LEVEL]</span></div>
+        <div class="risk-text">[RISK_EXPLANATION]</div>
+    </div>
+    <h3>Top Issues</h3>
+    <ol>
+        <li>[TOP_ISSUE_1]</li>
+        <li>[TOP_ISSUE_2]</li>
+        <li>[TOP_ISSUE_3]</li>
+    </ol>
+    <p>[REASSURANCE_LINE]</p>
+</div>
+
+<!-- ============ WHY THIS MATTERS ============ -->
+<div class="section">
+    <h2>Why Accessibility Matters</h2>
+    <p>[WHY_PARAGRAPH_LEGAL: ADA Title III applies to business websites; WCAG 2.1 AA is the standard courts use. Adapt industry/state context.]</p>
+    <p>[WHY_PARAGRAPH_BUSINESS: roughly 1 in 4 US adults has a disability; accessibility helps SEO and conversion.]</p>
+    <!-- Include only if an overlay widget was found: -->
+    <div class="callout">
+        <div class="callout-label">Note on Accessibility Widgets</div>
+        [OVERLAY_WIDGET_EXPLANATION]
+    </div>
+</div>
+
+<!-- ============ SCORE BREAKDOWN ============ -->
+<div class="section">
+    <h2>Score Breakdown</h2>
+    <table class="score-table">
+        <thead><tr><th>Category</th><th>Weight</th><th>Score</th><th></th></tr></thead>
+        <tbody>
+            <!-- Repeat per category. Bar fill class: excellent 85+, good 70-84, fair 55-69, poor <55. Width = score % -->
+            <tr>
+                <td>[CATEGORY_NAME]</td>
+                <td>[WEIGHT]%</td>
+                <td>[CAT_SCORE]%</td>
+                <td><div class="score-bar"><div class="score-bar-fill [BAR_CLASS]" style="width: [CAT_SCORE]%"></div></div></td>
+            </tr>
+            <tr>
+                <td>Overall</td><td>100%</td><td>[SCORE]%</td>
+                <td><div class="score-bar"><div class="score-bar-fill [BAR_CLASS]" style="width: [SCORE]%"></div></div></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<!-- ============ PRIORITY FIXES ============ -->
+<div class="section">
+    <h2>Priority Fixes</h2>
+
+    <div class="fix-group-label now">Fix Now: Legal Exposure</div>
+    <!-- Repeat per fix -->
+    <div class="priority-fix">
+        <div class="priority-number">1</div>
+        <div class="priority-content">
+            <h4>[FIX_TITLE]</h4>
+            <p><strong>Where:</strong> [WHERE]. <strong>Who it affects:</strong> [WHO_AFFECTED]</p>
+            <div class="fix-how"><strong>How to fix:</strong> [DEVELOPER_INSTRUCTION]</div>
+            <div class="priority-meta">
+                <span class="tag tag-wcag">WCAG [WCAG_REF]</span>
+                <span class="tag tag-legal-high">Legal: High</span>
+                <span class="effort-tag effort-easy">Quick Fix</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="fix-group-label soon">Fix Soon: Real Barriers</div>
+    <!-- Same .priority-fix structure -->
+
+    <div class="fix-group-label later">Fix Later: Polish</div>
+    <!-- Same .priority-fix structure -->
+</div>
+
+<!-- ============ DETAILED FINDINGS ============ -->
+<div class="section">
+    <h2>Detailed Findings</h2>
+    <!-- Repeat per category -->
+    <div class="category-block">
+        <div class="category-header">
+            <h3>[N]. [CATEGORY_NAME]</h3>
+            <span class="category-score-badge">[CAT_SCORE]%</span>
+        </div>
+        <div class="category-items">
+            <!-- Repeat per criterion. Score classes: pass / partial / fail / untested -->
+            <div class="criterion-row">
+                <span class="criterion-name">[CRITERION] <span class="tag tag-wcag">[WCAG_REF]</span></span>
+                <span class="criterion-score pass">Pass</span>
+                <!-- Only when there is evidence to show: -->
+                <div class="criterion-detail">[EVIDENCE_OR_CODE_SNIPPET]</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ============ SCREENSHOTS ============ -->
+<div class="section">
+    <h2>Site Snapshots</h2>
+    <div class="screenshot-grid">
+        <div class="screenshot-box">
+            <h4>Desktop</h4>
+            <div class="screenshot-container"><img class="screenshot-img" src="data:image/png;base64,[DESKTOP_SCREENSHOT_BASE64]" alt="Desktop view of [SITE_URL]"></div>
+        </div>
+        <div class="screenshot-box">
+            <h4>Mobile</h4>
+            <div class="screenshot-container"><img class="screenshot-img screenshot-mobile" src="data:image/png;base64,[MOBILE_SCREENSHOT_BASE64]" alt="Mobile view of [SITE_URL]"></div>
+        </div>
+    </div>
+</div>
+
+<!-- ============ NOT TESTED + ROADMAP ============ -->
+<div class="section">
+    <h2>Manual Testing: The Final Step</h2>
+    <p>The checks above were done with automated tools and expert review. A small number of items need a person interacting with the site, tabbing through forms, using a screen reader. We can complete these for you as a follow-up, or your team can run them using the included testing guide (about 30 minutes):</p>
+    <ul>
+        <li>[UNTESTED_ITEM: e.g. form error handling on submission]</li>
+    </ul>
+    <p>We recommend a follow-up interactive test (keyboard walkthrough and screen reader pass) after the priority fixes are complete.</p>
+
+    <h2>Recommended Roadmap</h2>
+    <div class="rec-grid">
+        <div class="rec-box"><h4>Weeks 1-2</h4><ul><li>[CRITICAL_FIX_ITEMS]</li></ul></div>
+        <div class="rec-box"><h4>Month 1</h4><ul><li>[SERIOUS_FIX_ITEMS]</li></ul></div>
+        <div class="rec-box"><h4>Ongoing</h4><ul><li>Publish accessibility statement</li><li>Retest quarterly or after major changes</li><li>[TEAM_HABITS]</li></ul></div>
+    </div>
+
+    <h2>Next Steps</h2>
+    <p>[NEXT_STEPS: remediation offer, retest after fixes, ongoing monitoring]</p>
+
+    <div class="disclaimer">
+        <strong>Disclaimer:</strong> This audit is a technical assessment, not legal advice. It measures the site against WCAG 2.1 AA, the standard referenced by US courts and the Department of Justice in ADA matters. Completing the recommended fixes substantially improves conformance and significantly reduces legal exposure, but no audit can guarantee immunity from claims. For legal questions about ADA compliance, consult a lawyer.
+    </div>
+
+    <div class="report-footer">
+        Prepared by [PREPARED_BY] | [YOUR_WEBSITE] | [AUDIT_DATE]
+    </div>
+</div>
+
+</body>
+</html>

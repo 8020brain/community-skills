@@ -9,6 +9,18 @@
   },
   "plugins": [
     {
+      "name": "brain-full-audit",
+      "description": "Full audit of your brain build across eight dimensions: security, cost, efficiency, structure, reliability, privacy, rule compliance, and design quality. Scored report, nothing changes until you approve.",
+      "source": "./brain-full-audit",
+      "author": { "name": "Zara Imrie" }
+    },
+    {
+      "name": "sellable-ada-audit",
+      "description": "Audit a website for ADA compliance against WCAG 2.1 AA. Automated checks plus screenshot and HTML review, scored report with legal risk level and developer-ready fixes. Built to sell as a client service.",
+      "source": "./sellable-ada-audit",
+      "author": { "name": "Zara Imrie" }
+    },
+    {
       "name": "threshold-recommender",
       "description": "Interactive Shopping Threshold Recommender for Google Ads. Product-level bucketing with adjustable ROAS/CPA sliders and AI recommendations.",
       "source": "./threshold-recommender",
