@@ -1,6 +1,6 @@
-# Connecting Microsoft Advertising to the Brain (Community Guide)
+# Connecting Microsoft Advertising via the API (Community Guide)
 
-This is the exact setup Michael uses, written for anyone hitting the two walls people keep getting stuck on:
+This is a battle-tested setup, written for anyone hitting the two walls people keep getting stuck on:
 
 1. **"The ability to create applications outside of a directory has been retired."** (the Azure registration wall)
 2. **"Action required: Please contact Microsoft Advertising Support regarding your API access request."** (the developer token wall)
@@ -72,7 +72,7 @@ That `f988...` app and the "Microsoft Services" tenant belong to **Microsoft's o
 When you request a developer token at https://developers.ads.microsoft.com/Account you get a token string **immediately**. Microsoft then sends a standard compliance email. That email is **not always a block**. There are three realities:
 
 1. **The token often already works for production.** People assume the email means "blocked" and stop. Test it first (see "Verify" step below) before assuming anything. Many tokens are live the moment they are issued.
-2. **Brand-new empty accounts get flagged more.** Tokens requested on a Microsoft Advertising account with **no billing history and no ad spend** trigger manual review far more often. Michael's works smoothly because his accounts are established and actively spending. If you can, request the token from an account that already has a payment method and live campaigns.
+2. **Brand-new empty accounts get flagged more.** Tokens requested on a Microsoft Advertising account with **no billing history and no ad spend** trigger manual review far more often. Established accounts with active spend sail through. If you can, request the token from an account that already has a payment method and live campaigns.
 3. **If it is genuinely gated**, reply to that exact email (or open a ticket via the developer portal) with: your Microsoft Advertising **Account ID**, that you are using the API to **manage your own / your clients' advertising accounts** (not building a public-facing app), and that you need **standard production access**. Approval is typically 1-3 business days. Be specific and boring; vague requests get bounced.
 
 ### Sandbox shortcut while you wait
@@ -127,12 +127,10 @@ https://developers.ads.microsoft.com/Account -> sign in with the Microsoft accou
 
 ### Step 6: Generate the OAuth refresh token
 
-Ask Claude Code: **"generate my Microsoft Ads refresh token, client ID is `<your_id>` and secret is `<your_secret>`"**. Claude will run `get-refresh-token.cjs` for you (passing the values as arguments — no file editing needed).
-
-Or run it yourself from the installed plugin path:
+Edit `scripts/get-refresh-token.js` and fill in `CLIENT_ID` and `CLIENT_SECRET` at the top. Then:
 
 ```bash
-node ~/.claude/plugins/cache/a2ai-community/microsoft-ads/*/skills/microsoft-ads/scripts/get-refresh-token.cjs YOUR_CLIENT_ID YOUR_CLIENT_SECRET
+node scripts/get-refresh-token.js
 ```
 
 It prints a URL. Open it. **Sign in with a PERSONAL Microsoft account** (outlook.com / hotmail.com / live.com, or a personal MS account that has been granted access to the Microsoft Advertising manager account). **Work/school accounts will not work with the Bing Ads API.** Approve. The terminal prints `REFRESH_TOKEN=...` -> that is `MICROSOFT_ADS_REFRESH_TOKEN`.
@@ -142,7 +140,7 @@ It prints a URL. Open it. **Sign in with a PERSONAL Microsoft account** (outlook
 
 ### Step 7: Save to .env
 
-In the brain root `.env`:
+In the skill folder `.env` (next to SKILL.md):
 
 ```
 MICROSOFT_ADS_CLIENT_ID=your_client_id
@@ -151,11 +149,11 @@ MICROSOFT_ADS_DEVELOPER_TOKEN=your_dev_token
 MICROSOFT_ADS_REFRESH_TOKEN=your_refresh_token
 ```
 
-The refresh token **rotates on every use**. The auth script automatically writes the new one back to `.env` for you, so do not be surprised when the value changes.
+The refresh token **rotates on every use**. `msads-helper.js` automatically writes the new one back to `.env` for you, so do not be surprised when the value changes.
 
 ### Step 8: Verify it works
 
-Ask the brain: **"list my Microsoft Ads accounts"**. Under the hood this runs `GetUser` then `SearchAccounts`. If you get your user ID and account list back, you are fully connected. This is also the real test for Wall 2: if this returns data, your developer token is live regardless of the support email.
+Ask your assistant: **"list my Microsoft Ads accounts"**. Under the hood this runs `GetUser` then `SearchAccounts`. If you get your user ID and account list back, you are fully connected. This is also the real test for Wall 2: if this returns data, your developer token is live regardless of the support email.
 
 ---
 
@@ -181,4 +179,4 @@ Ask the brain: **"list my Microsoft Ads accounts"**. Under the hood this runs `G
 
 ---
 
-*This guide documents a known-working production setup. Contributed by Michael Nadalin, updated 18 May 2026 to address the Azure tenant + developer-token walls members were hitting. Supersedes the previous `SETUP-GUIDE.md`.*
+*This guide documents a known-working production setup. It complements `SETUP.md` (the original step list) and `SKILL.md` (the API architecture). If you only read one file, read this one.*

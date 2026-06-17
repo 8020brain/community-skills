@@ -1,6 +1,6 @@
 {
-  "version": "1.7.0",
-  "updated": "2026-06-13",
+  "version": "1.8.0",
+  "updated": "2026-06-18",
   "skills": [
     {
       "name": "brain-full-audit",
@@ -36,11 +36,11 @@
     },
     {
       "name": "microsoft-ads",
-      "displayName": "Microsoft Ads",
-      "description": "Query Microsoft Advertising (Bing Ads) accounts via the SOAP API. Pull campaign performance, search terms, conversions. v1.1.0 ships an updated connection guide that walks past the Azure tenant + developer-token walls.",
+      "displayName": "Microsoft Ads (v2)",
+      "description": "v2 rebuilds the skill on the Microsoft Advertising REST API v13 (the old SOAP version is deprecated, gone Jan 2027). Pull campaign, keyword and search-term performance, manage conversion goals and UET tags, and run any report end to end. Ships a battle-tested connection guide that walks past the Azure \"directory retired\" and developer-token \"contact support\" walls.",
       "contributor": "Michael Nadalin",
-      "version": "1.1.0",
-      "tags": ["Ads", "Microsoft", "Bing"]
+      "version": "2.0.0",
+      "tags": ["Ads", "Microsoft", "Bing", "REST"]
     },
     {
       "name": "bucket-list",

@@ -1,1 +1,1 @@
-{"name":"microsoft-ads","version":"1.1.0","description":"Query Microsoft Advertising (Bing Ads) via SOAP API — campaigns, search terms, conversions.","author":{"name":"Michael Nadalin"}}
+{"name":"microsoft-ads","version":"2.0.0","description":"Query Microsoft Advertising (Bing Ads) via the REST API v13: campaigns, search terms, conversions, conversion goals, UET tags, and reporting.","author":{"name":"Michael Nadalin"}}

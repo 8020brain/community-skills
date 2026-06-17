@@ -34,7 +34,7 @@
     },
     {
       "name": "microsoft-ads",
-      "description": "Query Microsoft Advertising (Bing Ads) via SOAP API — campaigns, search terms, conversions.",
+      "description": "v2 rewrite on the Microsoft Advertising REST API v13 (SOAP retired): campaigns, search terms, conversions, conversion goals, UET tags, and reporting.",
       "source": "./microsoft-ads",
       "author": { "name": "Michael Nadalin" }
     },

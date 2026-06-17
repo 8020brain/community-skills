@@ -1,27 +1,12 @@
-/**
- * Microsoft Ads — OAuth Refresh Token Generator
- *
- * Starts a local server on port 3847, opens the Microsoft OAuth flow,
- * and captures the refresh token for ongoing API access.
- *
- * Usage: node get-refresh-token.cjs <client_id> <client_secret>
- *
- * IMPORTANT: Sign in with a PERSONAL Microsoft account (outlook.com, hotmail.com,
- * or gmail linked to Microsoft). Work/school accounts will NOT work with Bing Ads API.
- */
-
 const http = require('http');
 const https = require('https');
 const querystring = require('querystring');
 const { URL } = require('url');
 
-const CLIENT_ID = process.argv[2];
-const CLIENT_SECRET = process.argv[3];
-
-if (!CLIENT_ID || !CLIENT_SECRET) {
-  console.error('Usage: node get-refresh-token.cjs <client_id> <client_secret>');
-  process.exit(1);
-}
+// ============ FILL THESE IN ============
+const CLIENT_ID = 'YOUR_APPLICATION_CLIENT_ID';
+const CLIENT_SECRET = 'YOUR_CLIENT_SECRET_VALUE';
+// ========================================
 
 const REDIRECT_URI = 'http://localhost:3847/callback';
 const SCOPE = 'https://ads.microsoft.com/msads.manage offline_access';
@@ -74,15 +59,14 @@ const server = http.createServer(async (req, res) => {
       });
 
       const parsed = JSON.parse(tokenResp);
-
       if (parsed.error) {
         console.error('Token error:', parsed.error, parsed.error_description);
         res.end('Error getting token. Check terminal.');
       } else {
         console.log('\n=== SUCCESS ===');
         console.log('REFRESH_TOKEN=' + parsed.refresh_token);
-        console.log('\nAdd this to your .env file as MICROSOFT_ADS_REFRESH_TOKEN');
-        res.end('Success! You can close this tab. Check your terminal for the refresh token.');
+        console.log('\nSave this refresh token in your .env file.');
+        res.end('Success! You can close this tab.');
       }
     } catch (e) {
       console.error('Error:', e);
@@ -96,5 +80,5 @@ const server = http.createServer(async (req, res) => {
 server.listen(3847, () => {
   console.log('Open this URL in your browser:\n');
   console.log(authUrl);
-  console.log('\nWaiting for OAuth callback on http://localhost:3847/callback ...');
+  console.log('\nWaiting for OAuth callback...');
 });
