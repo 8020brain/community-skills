@@ -1,7 +1,15 @@
 {
-  "version": "1.8.0",
-  "updated": "2026-06-18",
+  "version": "1.9.0",
+  "updated": "2026-08-04",
   "skills": [
+    {
+      "name": "google-ads-auction-insights",
+      "displayName": "Google Ads Auction Insights",
+      "description": "Tracks how competitors move in a client's Google Ads Search and Shopping auctions, week by week. An Apps Script consolidates Auction Insights scheduled reports from a Drive folder into a hub sheet, one tab per report, and a Node script builds an interactive dashboard with per-metric explanations, competitor isolation, and auto-generated key points, plus a periodic alerts script for your morning routine. Handles English and Italian reports and dot or comma decimals, matched from each report's own headers. Ships 24 tests, a sample report so you can try it before connecting an account, and a diagnose function for setup debugging.",
+      "contributor": "Andrea Lombardi & Sandra Walsh",
+      "version": "1.0.0",
+      "tags": ["Google Ads", "Competitors", "Auction Insights", "Reporting"]
+    },
     {
       "name": "brain-full-audit",
       "displayName": "Brain Full Audit",

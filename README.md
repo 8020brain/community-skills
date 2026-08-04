@@ -14,6 +14,7 @@ From your brain, run:
 
 | Skill | Contributor | Description |
 |-------|-------------|-------------|
+| `google-ads-auction-insights` | Andrea Lombardi & Sandra Walsh | Consolidate Auction Insights scheduled reports into a hub sheet and build an interactive competitor dashboard, one tab per report, plus periodic auction alerts |
 | `microsoft-ads` | Michael Nadalin | Query Microsoft Advertising (Bing Ads) via SOAP API — campaigns, search terms, conversions |
 | `bucket-list` | Jeff Martyka | Track bucket list experiences, festivals, and natural phenomena with web enrichment |
 | `e2e-qa-testing` | Paul Saunders | Automated E2E QA testing for Next.js apps using Playwright |
