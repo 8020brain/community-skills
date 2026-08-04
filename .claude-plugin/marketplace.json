@@ -9,12 +9,6 @@
   },
   "plugins": [
     {
-      "name": "google-ads-auction-insights",
-      "description": "Consolidates Google Ads Auction Insights scheduled reports into a hub sheet and builds an interactive competitor dashboard, one tab per report, plus periodic auction alerts. Handles English and Italian reports, dot or comma decimals, with 24 tests and a bundled sample report.",
-      "source": "./google-ads-auction-insights",
-      "author": { "name": "Andrea Lombardi & Sandra Walsh" }
-    },
-    {
       "name": "brain-full-audit",
       "description": "Full audit of your brain build across eight dimensions: security, cost, efficiency, structure, reliability, privacy, rule compliance, and design quality. Scored report, nothing changes until you approve.",
       "source": "./brain-full-audit",
