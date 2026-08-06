@@ -44,7 +44,22 @@ function findClients() {
     .filter(c => fs.existsSync(c.dir));
 }
 
-function hubBase(url) { return url.split('?')[0].replace(/\/+$/, ''); }
+/**
+ * Normalise a published-sheet URL to its CSV-serving base.
+ *
+ * The Publish to web dialog hands you a URL ending in `/pubhtml`, not `/pub`, and
+ * `/pubhtml?output=csv` serves HTML rather than CSV. SKILL.md tells people to
+ * paste the dialog's URL as-is, so this normalisation is what makes that true.
+ *
+ * MUST match `hubBase` in build-dashboard.cjs. It did not, from 29 Jul to 5 Aug
+ * 2026: the manifest fetch here got HTML, failed the header check, returned null,
+ * and pickSource fell through to the offline `_snapshot*.psv`. The alerts then
+ * printed a perfectly normal-looking report off a nine-day-old snapshot with no
+ * error anywhere. Silent staleness, again — do not let these two drift apart.
+ */
+function hubBase(url) {
+  return url.split('?')[0].replace(/\/+$/, '').replace(/\/pubhtml$/i, '/pub');
+}
 
 /** Split a CSV line honouring quotes: report names can contain commas. */
 function splitCsvLine(line) {
@@ -60,7 +75,12 @@ function splitCsvLine(line) {
   return out;
 }
 
-/** From the hub Manifest, the CSV URL of the first Shopping tab. */
+/**
+ * From the hub Manifest, the CSV URL of the first usable report tab.
+ * Prefers a Shopping tab, then falls back to a Search tab — a search-only
+ * account (any lead-gen account) has no Shopping tab at all, and returning
+ * null for those made the alerts pass report "no data source".
+ */
 function shopUrlFromHub(hub) {
   try {
     const manifest = execSync(`curl -sL "${hubBase(hub)}?output=csv"`, { encoding: 'utf8', timeout: 20000 });
@@ -68,12 +88,18 @@ function shopUrlFromHub(hub) {
     if (!lines.length) return null;
     const hdr = splitCsvLine(lines[0]).map(x => x.trim().toLowerCase());
     if (hdr[0] !== 'tab' || hdr[1] !== 'gid') return null;
+
+    let searchGid = null;
     for (let i = 1; i < lines.length; i++) {
       const c = splitCsvLine(lines[i]).map(x => x.trim());
-      if (c.length >= 3 && /^\d+$/.test(c[1]) && c[2].toLowerCase().startsWith('shop')) {
+      if (c.length < 3 || !/^\d+$/.test(c[1])) continue;
+      const type = c[2].toLowerCase();
+      if (type.startsWith('shop')) {
         return `${hubBase(hub)}?gid=${c[1]}&single=true&output=csv`;
       }
+      if (!searchGid && type.startsWith('search')) searchGid = c[1];
     }
+    if (searchGid) return `${hubBase(hub)}?gid=${searchGid}&single=true&output=csv`;
   } catch (e) { /* falls through */ }
   return null;
 }
@@ -101,7 +127,9 @@ function pickSource(dir) {
       if (fs.existsSync(tmp) && fs.statSync(tmp).size > 50) return tmp;
     } catch (e) { /* falls through */ }
   }
-  for (const f of ['data.csv', '_snapshot.psv']) {
+  // '_snapshot-search.psv' is the search-account equivalent of '_snapshot.psv';
+  // without it, a search-only client falls through to "no data source".
+  for (const f of ['data.csv', '_snapshot.psv', '_snapshot-search.psv']) {
     const p = path.join(dir, f);
     if (fs.existsSync(p)) return p;
   }
