@@ -1,0 +1,6 @@
+{
+  "name": "seo-council-eval",
+  "version": "0.9.0",
+  "description": "A council of named-lens SEO experts scores one page against a six-dimension rubric (entity, GEO/AEO, intent, E-E-A-T, on-page, strategic fit) and returns a ranked fix list. Independent per-dimension scoring, a two-reader design on search intent, an attribution gate that keeps named practitioners represented as analytical lenses, and a method for building your own calibration anchors over time.",
+  "author": { "name": "Jonti Bolles, WHO Digital Strategy" }
+}

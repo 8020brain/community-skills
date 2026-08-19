@@ -9,70 +9,100 @@
   },
   "plugins": [
     {
+      "name": "seo-council-eval",
+      "description": "A council of named-lens SEO experts scores one page against a six-dimension rubric (entity and semantic coverage, GEO/AEO retrieval, search intent, E-E-A-T, on-page mechanics, strategic fit) and returns a ranked fix list with a verdict of ship, fix-then-ship, or rework. Each dimension is scored by a separate agent so disagreements are discovered rather than authored, with two readers on search intent because it carries the most weight. A mandatory attribution gate keeps the named practitioners represented as analytical lenses, never as if they reviewed the page.",
+      "source": "./seo-council-eval",
+      "author": {
+        "name": "Jonti Bolles, WHO Digital Strategy"
+      }
+    },
+    {
       "name": "google-ads-auction-insights",
       "description": "Consolidates Google Ads Auction Insights scheduled reports into a hub sheet and builds an interactive competitor dashboard, one tab per report, plus periodic auction alerts and a staleness tripwire that catches a frozen scheduled report. Handles English and Italian reports, dot or comma decimals, with 24 tests and a bundled sample report.",
       "source": "./google-ads-auction-insights",
-      "author": { "name": "Andrea Lombardi & Sandra Walsh" }
+      "author": {
+        "name": "Andrea Lombardi & Sandra Walsh"
+      }
     },
     {
       "name": "brain-full-audit",
       "description": "Full audit of your brain build across eight dimensions: security, cost, efficiency, structure, reliability, privacy, rule compliance, and design quality. Scored report, nothing changes until you approve.",
       "source": "./brain-full-audit",
-      "author": { "name": "Zara Imrie" }
+      "author": {
+        "name": "Zara Imrie"
+      }
     },
     {
       "name": "sellable-ada-audit",
       "description": "Audit a website for ADA compliance against WCAG 2.1 AA. Automated checks plus screenshot and HTML review, scored report with legal risk level and developer-ready fixes. Built to sell as a client service.",
       "source": "./sellable-ada-audit",
-      "author": { "name": "Zara Imrie" }
+      "author": {
+        "name": "Zara Imrie"
+      }
     },
     {
       "name": "threshold-recommender",
       "description": "Interactive Shopping Threshold Recommender for Google Ads. Product-level bucketing with adjustable ROAS/CPA sliders and AI recommendations.",
       "source": "./threshold-recommender",
-      "author": { "name": "Gabriele Benedetti" }
+      "author": {
+        "name": "Gabriele Benedetti"
+      }
     },
     {
       "name": "budget-guardian",
       "description": "Monitors a Google Ads MCC for monthly budget overruns and sends Slack alerts at 100% and 120% of monthly budget per account. Alert-only, never pauses campaigns.",
       "source": "./budget-guardian",
-      "author": { "name": "Kurt Henninger" }
+      "author": {
+        "name": "Kurt Henninger"
+      }
     },
     {
       "name": "microsoft-ads",
       "description": "v2 rewrite on the Microsoft Advertising REST API v13 (SOAP retired): campaigns, search terms, conversions, conversion goals, UET tags, and reporting.",
       "source": "./microsoft-ads",
-      "author": { "name": "Michael Nadalin" }
+      "author": {
+        "name": "Michael Nadalin"
+      }
     },
     {
       "name": "bucket-list",
       "description": "Track bucket list experiences, festivals, and natural phenomena with auto-enrichment via web research.",
       "source": "./bucket-list",
-      "author": { "name": "Jeff Martyka" }
+      "author": {
+        "name": "Jeff Martyka"
+      }
     },
     {
       "name": "e2e-qa-testing",
       "description": "Automated E2E QA testing for Next.js apps using Playwright.",
       "source": "./e2e-qa-testing",
-      "author": { "name": "Paul Saunders" }
+      "author": {
+        "name": "Paul Saunders"
+      }
     },
     {
       "name": "mutation-safety",
       "description": "Mandatory safety system that enforces two-step approval for all Google Ads mutations and destructive Google Sheets operations.",
       "source": "./mutation-safety",
-      "author": { "name": "Kurt Henninger" }
+      "author": {
+        "name": "Kurt Henninger"
+      }
     },
     {
       "name": "home-repair-funds",
       "description": "Homeowner sinking-fund planner. Tracks major home systems with install dates, lifespans, and replacement costs. Calculates weekly savings split across HYSA + brokerage.",
       "source": "./home-repair-funds",
-      "author": { "name": "Jeff Martyka" }
+      "author": {
+        "name": "Jeff Martyka"
+      }
     },
     {
       "name": "website-builder-pack",
       "description": "Ten skills that take you from a blank folder to a launch-ready WordPress site with Claude Code and Local WP. Site planning, theme scaffolding, page building, copywriting, SEO/AEO, security and production audits, and a pre-launch checklist.",
       "source": "./website-builder-pack",
-      "author": { "name": "Zara Imrie" }
+      "author": {
+        "name": "Zara Imrie"
+      }
     }
   ]
 }

@@ -14,6 +14,7 @@ From your brain, run:
 
 | Skill | Contributor | Description |
 |-------|-------------|-------------|
+| `seo-council-eval` | Jonti Bolles | A council of named-lens SEO experts scores one page across six dimensions (entity coverage, GEO/AEO, search intent, E-E-A-T, on-page, strategic fit) and returns a ranked fix list with a ship / fix-then-ship / rework verdict |
 | `google-ads-auction-insights` | Andrea Lombardi & Sandra Walsh | Consolidate Auction Insights scheduled reports into a hub sheet and build an interactive competitor dashboard, one tab per report, plus periodic auction alerts |
 | `microsoft-ads` | Michael Nadalin | Query Microsoft Advertising (Bing Ads) via SOAP API — campaigns, search terms, conversions |
 | `bucket-list` | Jeff Martyka | Track bucket list experiences, festivals, and natural phenomena with web enrichment |

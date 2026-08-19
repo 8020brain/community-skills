@@ -1,14 +1,34 @@
 {
-  "version": "1.10.0",
-  "updated": "2026-08-06",
+  "version": "1.11.0",
+  "updated": "2026-08-20",
   "skills": [
+    {
+      "name": "seo-council-eval",
+      "displayName": "SEO Council (eval)",
+      "description": "A council of named-lens SEO experts scores one page against a six-dimension rubric (entity and semantic coverage, GEO/AEO retrieval, search intent, E-E-A-T, on-page mechanics, strategic fit) and returns a ranked fix list with a verdict of ship, fix-then-ship, or rework. Each dimension is scored by a separate agent so disagreements are discovered rather than authored, with two readers on search intent because it carries the most weight. A mandatory attribution gate keeps the named practitioners represented as analytical lenses, never as if they reviewed the page. Ships the written scoring anchors and a method for building your own calibration over time; works from nothing but a URL and a target query.",
+      "contributor": "Jonti Bolles, WHO Digital Strategy",
+      "version": "0.9.0",
+      "tags": [
+        "SEO",
+        "AEO",
+        "GEO",
+        "Content",
+        "Evaluation",
+        "Council"
+      ]
+    },
     {
       "name": "google-ads-auction-insights",
       "displayName": "Google Ads Auction Insights",
       "description": "Tracks how competitors move in a client's Google Ads Search and Shopping auctions, week by week. An Apps Script consolidates Auction Insights scheduled reports from a Drive folder into a hub sheet, one tab per report, and a Node script builds an interactive dashboard with per-metric explanations, competitor isolation, and auto-generated key points, plus a periodic alerts script for your morning routine and a staleness tripwire that catches a frozen scheduled report (the failure where a file arrives every morning but the data never moves). Includes a full guided setup walkthrough. Handles English and Italian reports and dot or comma decimals, matched from each report's own headers. Ships 24 tests, a sample report so you can try it before connecting an account, and a diagnose function for setup debugging.",
       "contributor": "Andrea Lombardi & Sandra Walsh",
       "version": "1.1.0",
-      "tags": ["Google Ads", "Competitors", "Auction Insights", "Reporting"]
+      "tags": [
+        "Google Ads",
+        "Competitors",
+        "Auction Insights",
+        "Reporting"
+      ]
     },
     {
       "name": "brain-full-audit",
@@ -16,7 +36,12 @@
       "description": "Run a full audit of your brain build across eight dimensions: security, cost and token use, efficiency and redundancy, structure and hygiene, reliability, data and privacy, rule compliance, and design quality. Produces a scored RAG report with a token-weight table and prioritised fixes. Report-only: nothing is changed until you approve findings by ID.",
       "contributor": "Zara Imrie",
       "version": "1.0.0",
-      "tags": ["Brain", "Audit", "Maintenance", "Security"]
+      "tags": [
+        "Brain",
+        "Audit",
+        "Maintenance",
+        "Security"
+      ]
     },
     {
       "name": "sellable-ada-audit",
@@ -24,7 +49,13 @@
       "description": "Audit a website for ADA compliance against WCAG 2.1 AA, the standard US courts use for ADA Title III claims. Automated static checks (plain Node, no dependencies) plus screenshot and HTML review, scored across six categories with a legal risk level and developer-ready fixes. Includes a printable client report template, so it is built to sell as a service.",
       "contributor": "Zara Imrie",
       "version": "1.0.0",
-      "tags": ["ADA", "Accessibility", "WCAG", "Sellable", "Audit"]
+      "tags": [
+        "ADA",
+        "Accessibility",
+        "WCAG",
+        "Sellable",
+        "Audit"
+      ]
     },
     {
       "name": "threshold-recommender",
@@ -32,7 +63,11 @@
       "description": "Generates an interactive Shopping Threshold Recommender HTML report for a Google Ads client. Pulls 8 weeks of product-level Shopping data and builds an HTML app with adjustable ROAS/CPA and Cost/Clicks sliders that bucket products into Profitable, Costly, Flukes, and Meh quadrants in real time. Adds AI recommendations based on Andrew Lolk's framework: campaign structure verdict, per-bucket data-fragmentation risk, bestseller ROAS headroom, and zombie subcategory analysis.",
       "contributor": "Gabriele Benedetti",
       "version": "1.0.0",
-      "tags": ["Google Ads", "Shopping", "Reporting"]
+      "tags": [
+        "Google Ads",
+        "Shopping",
+        "Reporting"
+      ]
     },
     {
       "name": "budget-guardian",
@@ -40,7 +75,13 @@
       "description": "Monitors a Google Ads MCC for monthly budget overruns and sends Slack alerts at 100% and 120% of monthly budget per account. Alert-only, never pauses campaigns. Catches hijacked accounts, runaway PMax, and fat-fingered budgets within ~2 hours. Runs on GitHub Actions on a 2-hour cron.",
       "contributor": "Kurt Henninger",
       "version": "1.0.0",
-      "tags": ["Google Ads", "MCC", "Alerts", "Safety", "Slack"]
+      "tags": [
+        "Google Ads",
+        "MCC",
+        "Alerts",
+        "Safety",
+        "Slack"
+      ]
     },
     {
       "name": "microsoft-ads",
@@ -48,7 +89,12 @@
       "description": "v2 rebuilds the skill on the Microsoft Advertising REST API v13 (the old SOAP version is deprecated, gone Jan 2027). Pull campaign, keyword and search-term performance, manage conversion goals and UET tags, and run any report end to end. Ships a battle-tested connection guide that walks past the Azure \"directory retired\" and developer-token \"contact support\" walls.",
       "contributor": "Michael Nadalin",
       "version": "2.0.0",
-      "tags": ["Ads", "Microsoft", "Bing", "REST"]
+      "tags": [
+        "Ads",
+        "Microsoft",
+        "Bing",
+        "REST"
+      ]
     },
     {
       "name": "bucket-list",
@@ -56,7 +102,11 @@
       "description": "Track bucket list experiences, festivals, natural phenomena, and photo trip opportunities with auto-enrichment via web research.",
       "contributor": "Jeff Martyka",
       "version": "1.0.0",
-      "tags": ["Personal", "Travel", "Lifestyle"]
+      "tags": [
+        "Personal",
+        "Travel",
+        "Lifestyle"
+      ]
     },
     {
       "name": "e2e-qa-testing",
@@ -64,7 +114,12 @@
       "description": "Automated E2E QA testing for Next.js web apps using Playwright. Interviews you about your app, builds and runs a custom test suite.",
       "contributor": "Paul Saunders",
       "version": "1.0.0",
-      "tags": ["Testing", "Playwright", "Next.js", "QA"]
+      "tags": [
+        "Testing",
+        "Playwright",
+        "Next.js",
+        "QA"
+      ]
     },
     {
       "name": "mutation-safety",
@@ -72,7 +127,11 @@
       "description": "Mandatory safety system that enforces two-step approval for all Google Ads mutations and destructive Google Sheets operations.",
       "contributor": "Kurt Henninger",
       "version": "1.0.0",
-      "tags": ["Google Ads", "Safety", "Sheets"]
+      "tags": [
+        "Google Ads",
+        "Safety",
+        "Sheets"
+      ]
     },
     {
       "name": "home-repair-funds",
@@ -80,7 +139,11 @@
       "description": "Homeowner sinking-fund planner. Tracks major home systems with install dates, lifespans, and replacement costs. Calculates weekly savings split across HYSA + brokerage.",
       "contributor": "Jeff Martyka",
       "version": "1.0.0",
-      "tags": ["Personal", "Home", "Finance"]
+      "tags": [
+        "Personal",
+        "Home",
+        "Finance"
+      ]
     },
     {
       "name": "website-builder-pack",
@@ -88,7 +151,12 @@
       "description": "Ten Claude skills that take you from a blank folder to a launch-ready WordPress site using Claude Code and Local WP. No developer, no page builders, just clean custom-coded WordPress built through a conversation. Covers site planning, theme scaffolding, page building, copywriting, SEO/AEO, a code security audit, a production server audit, and a pre-launch checklist.",
       "contributor": "Zara Imrie",
       "version": "1.0.0",
-      "tags": ["WordPress", "Web Design", "SEO", "Content"]
+      "tags": [
+        "WordPress",
+        "Web Design",
+        "SEO",
+        "Content"
+      ]
     }
   ]
 }
