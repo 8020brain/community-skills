@@ -9,6 +9,14 @@
   },
   "plugins": [
     {
+      "name": "google-ads-pmax-asset-group-creator",
+      "description": "Create a new asset group inside an existing Performance Max campaign through the Google Ads API, guided one step at a time. Checks character limits before the API call, reuses the campaign's existing audience signals and brand logo, and comes out paused and dry-run by default. Python skill (needs Python and the google-ads library).",
+      "source": "./google-ads-pmax-asset-group-creator",
+      "author": {
+        "name": "Gabriele Benedetti"
+      }
+    },
+    {
       "name": "seo-council-eval",
       "description": "A council of named-lens SEO experts scores one page against a six-dimension rubric (entity and semantic coverage, GEO/AEO retrieval, search intent, E-E-A-T, on-page mechanics, strategic fit) and returns a ranked fix list with a verdict of ship, fix-then-ship, or rework. Each dimension is scored by a separate agent so disagreements are discovered rather than authored, with two readers on search intent because it carries the most weight. A mandatory attribution gate keeps the named practitioners represented as analytical lenses, never as if they reviewed the page.",
       "source": "./seo-council-eval",

@@ -1,0 +1,80 @@
+# Performance Max asset group definition.
+#
+# The target campaign is NOT declared here. Pick it at run time:
+#   python3 create_asset_group.py --list-campaigns --customer-id 1234567890
+#   python3 create_asset_group.py --input <this-file> --campaign-id <id>
+#   python3 create_asset_group.py --input <this-file> --campaign-id <id> --execute
+
+# --- Target account -------------------------------------------------------
+# Either give customer_id directly, or an `account` alias resolved via an
+# accounts.json (searched upward from the working directory, then ~/.claude/).
+customer_id: "1234567890"
+login_customer_id: "9876543210"   # manager (MCC) account, omit if not used
+# account: my-client-alias
+# google_ads_yaml: ~/google-ads.yaml
+
+# --- New asset group ------------------------------------------------------
+asset_group_name: "Spring Collection"
+final_url: "https://www.example.com/spring"
+business_name: "Example Store"        # max 25 characters
+
+# Optional display URL paths shown after the domain, max 15 characters each.
+# path1: "spring"
+# path2: "sale"
+
+headlines:                            # 3-15 entries, max 30 characters each
+  - "Free Shipping Over $50"
+  - "New Spring Collection"
+  - "Shop Today, Save More"
+
+long_headlines:                       # 1-5 entries, max 90 characters each
+  - "Discover the New Spring Collection With Free Shipping On Every Order"
+
+descriptions:                         # 2-5 entries, max 90 characters each
+  # Include at least one of 60 characters or fewer: some placements use a
+  # short description.
+  - "Shop the new season now."
+  - "Free shipping and free returns on every order, no minimum spend required."
+
+# --- Images ---------------------------------------------------------------
+# Option A: point at a folder and let filenames declare each image's role.
+#   Prefixes: logo_  landscape_logo_  marketing_  square_  portrait_
+# images_dir: ./images
+
+# Option B: map roles to files explicitly (paths are relative to this file).
+images:
+  logo:                               # 1:1, min 128x128, 1-5 files, required
+    - images/logo.png
+  marketing:                          # 1.91:1, min 600x314, 1-20 files, required
+    - images/hero-wide.jpg
+  square:                             # 1:1, min 300x300, 1-20 files, required
+    - images/hero-square.jpg
+  portrait:                           # 4:5, min 480x600, 0-20 files, optional
+    - images/hero-portrait.jpg
+  landscape_logo:                     # 4:1, min 512x128, 0-5 files, optional
+    - images/logo-wide.png
+
+# --- Assets already in the account (optional) -----------------------------
+# Link brand assets that already exist instead of uploading duplicates. Values
+# are asset IDs; they count toward the same per-role limits as uploaded files,
+# so a logo listed here means no local logo file is needed.
+# existing_assets:
+#   logo:
+#     - "6709283074"
+#   landscape_logo:
+#     - "6709283071"
+
+# --- YouTube videos (optional, up to 5) -----------------------------------
+# Use the 11-character video ID, not the full URL.
+youtube_ids:
+  - "dQw4w9WgXcQ"
+
+# --- Audience signals (optional) ------------------------------------------
+# Signals tell Google who to start from. Without them the asset group relies
+# on the campaign's own signals. Audiences are shared account resources, so
+# an ID links the existing audience; search themes are plain text.
+# audience_signals:
+#   - "11185684"
+# search_themes:
+#   - "brand name"
+#   - "competitor name"

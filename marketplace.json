@@ -1,7 +1,20 @@
 {
-  "version": "1.11.0",
-  "updated": "2026-08-20",
+  "version": "1.12.0",
+  "updated": "2026-09-01",
   "skills": [
+    {
+      "name": "google-ads-pmax-asset-group-creator",
+      "displayName": "PMax Asset Group Creator",
+      "description": "Create a new asset group inside an existing Performance Max campaign through the Google Ads API, guided one step at a time: account, campaign, name, copy, audience signals, images and up to five YouTube videos. Checks every character limit before it touches the API, reuses the campaign's existing audience signals and brand logo instead of redoing them, and maps images to their roles from your folder structure. Every asset group is created paused and every run is a dry run until you retype the customer ID to confirm, and the whole thing is one atomic write so a rejection creates nothing. Python skill: needs Python and the google-ads library.",
+      "contributor": "Gabriele Benedetti",
+      "version": "1.0.0",
+      "tags": [
+        "Google Ads",
+        "Performance Max",
+        "Asset Group",
+        "Creation"
+      ]
+    },
     {
       "name": "seo-council-eval",
       "displayName": "SEO Council (eval)",
