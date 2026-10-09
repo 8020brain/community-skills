@@ -1,7 +1,20 @@
 {
-  "version": "1.12.0",
-  "updated": "2026-09-01",
+  "version": "1.13.0",
+  "updated": "2026-10-09",
   "skills": [
+    {
+      "name": "linkedin-ad-library",
+      "displayName": "LinkedIn Ad Library",
+      "description": "Build a swipe file of LinkedIn ads in your own Notion. Drop in a screenshot (and the Ad Library link if you have it) and Claude copies the headline and intro text word for word, tags the ad by format, creative style, hook, objective, CTA and industry, writes a one-line note on why it works, and saves it as a gallery card. The first run builds the database plus Gallery, By Format and Best examples views. Needs the Notion connector. A bigger version that covers Meta, Google, YouTube and TikTok and saves into your brain ships in the brain as the ad-swipe-file skill.",
+      "contributor": "Thuha Wright",
+      "version": "1.0.0",
+      "tags": [
+        "LinkedIn Ads",
+        "Swipe File",
+        "Notion",
+        "Creative"
+      ]
+    },
     {
       "name": "google-ads-pmax-asset-group-creator",
       "displayName": "PMax Asset Group Creator",

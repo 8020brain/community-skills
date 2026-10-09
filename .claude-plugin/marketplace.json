@@ -9,6 +9,14 @@
   },
   "plugins": [
     {
+      "name": "linkedin-ad-library",
+      "description": "Save LinkedIn ad screenshots to your own LinkedIn Ad Library swipe file in Notion, auto-tagged by format, creative style, hook, industry, objective and CTA, with a short note on why each ad works. First run builds the Notion database and gallery views for you. Needs the Notion connector.",
+      "source": "./linkedin-ad-library",
+      "author": {
+        "name": "Thuha Wright"
+      }
+    },
+    {
       "name": "google-ads-pmax-asset-group-creator",
       "description": "Create a new asset group inside an existing Performance Max campaign through the Google Ads API, guided one step at a time. Checks character limits before the API call, reuses the campaign's existing audience signals and brand logo, and comes out paused and dry-run by default. Python skill (needs Python and the google-ads library).",
       "source": "./google-ads-pmax-asset-group-creator",
