@@ -23,5 +23,5 @@ browse, rate and filter by hook. Update your brain to get it, then say "save thi
 
 ## Credit
 
-Created by Thuha Wright. Shared with the Ads2AI community with her permission. Please keep
+Created by Thuha Wright and shared with the Ads2AI community. Please keep
 Thuha's credit if you pass it on.
