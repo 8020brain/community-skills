@@ -1,7 +1,35 @@
 {
-  "version": "1.13.0",
-  "updated": "2026-10-09",
+  "version": "1.14.0",
+  "updated": "2026-11-18",
   "skills": [
+    {
+      "name": "logo-brief",
+      "displayName": "Logo Brief",
+      "description": "Writes a detailed logo brief for a client (or your own business) to paste into Claude Design (claude.ai/design), which then makes the logo concepts. It fills in what your brain already knows about the client and their website, asks you only for what's missing, one question at a time, and saves the brief with the client's files. It always asks whether the client already has a logo they're attached to, so the first round isn't wasted. For anyone who wants to offer clients logo ideas without being a designer.",
+      "contributor": "Sandi Walsh",
+      "version": "1.0.0",
+      "tags": [
+        "Logo",
+        "Branding",
+        "Design",
+        "Claude Design",
+        "Client Work"
+      ]
+    },
+    {
+      "name": "google-ads-build-check-sheet",
+      "displayName": "Google Ads Build Check Sheet",
+      "description": "Builds one branded web page to send a client before a new campaign goes live: where the ads will run, the budget, the blocked searches, the selling points, every ad group with a Google preview and all its headlines and descriptions, the sitelinks and callouts, what's left before launch and what you need from the client. Before it builds anything, it checks every line of copy against Google's character limits and house rules (spelling, Title Case, '&' instead of 'and', minimum description length, duplicate headlines and any words you ban for a client), and builds nothing until they're fixed. It never connects to Google Ads, so there's no API setup.",
+      "contributor": "Isadora Benjamin (shared by Sandi Walsh)",
+      "version": "1.0.0",
+      "tags": [
+        "Google Ads",
+        "Ad Copy",
+        "Client Approval",
+        "Campaign Build",
+        "RSAs"
+      ]
+    },
     {
       "name": "linkedin-ad-library",
       "displayName": "LinkedIn Ad Library",

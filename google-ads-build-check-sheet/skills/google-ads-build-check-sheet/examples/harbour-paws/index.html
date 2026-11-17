@@ -1,0 +1,491 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Harbour Paws Google Ads Build</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<style>
+
+:root{ --ground:#F7F7F5; --surface:#FFFFFF; --surface-2:#EFEFEC; --ink:#0B0B0B; --ink-2:#3A3A38; --muted:#6F6D68; --line:#E0E0DB; --line-strong:#C2C2BB; --brand:#0E7C86; --brand-ink:#FFFFFF; --accent:#0E7C86; --accent-soft:color-mix(in srgb, #0E7C86 12%, #FFFFFF); --good:#3E7A55; --good-soft:#E2EFE7; --warn:#8A6A12; --warn-soft:#FBF3D4; --shadow:0 1px 2px rgba(11,11,11,.06),0 4px 14px rgba(11,11,11,.05); --serp-link:#1A0DAB; --serp-ground:#FFFFFF; --over:#A83226; --font-head:"Barlow Condensed","Source Sans 3",sans-serif; --font-body:"Source Sans 3",ui-sans-serif,system-ui,sans-serif; --font-mono:"IBM Plex Mono",ui-monospace,monospace; }
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){ --ground:#111211; --surface:#1A1B1A; --surface-2:#232523; --ink:#F1F2F0; --ink-2:#C8CBC6; --muted:#8B8F8A; --line:#2D302D; --line-strong:#444843; --brand:#0E7C86; --brand-ink:#08142E; --accent:#0E7C86; --accent-soft:color-mix(in srgb, #0E7C86 18%, #1A1B1A); --good:#79C79A; --good-soft:#1B2C22; --warn:#E4C46A; --warn-soft:#2E2717; --shadow:0 1px 2px rgba(0,0,0,.5),0 4px 14px rgba(0,0,0,.35); --serp-link:#99C3FF; --serp-ground:#1C252E; --over:#E58A7C; }}
+:root[data-theme="dark"]{ --ground:#111211; --surface:#1A1B1A; --surface-2:#232523; --ink:#F1F2F0; --ink-2:#C8CBC6; --muted:#8B8F8A; --line:#2D302D; --line-strong:#444843; --brand:#0E7C86; --brand-ink:#08142E; --accent:#0E7C86; --accent-soft:color-mix(in srgb, #0E7C86 18%, #1A1B1A); --good:#79C79A; --good-soft:#1B2C22; --warn:#E4C46A; --warn-soft:#2E2717; --shadow:0 1px 2px rgba(0,0,0,.5),0 4px 14px rgba(0,0,0,.35); --serp-link:#99C3FF; --serp-ground:#1C252E; --over:#E58A7C; }
+html{-webkit-text-size-adjust:100%}body{margin:0}*,*::before,*::after{box-sizing:border-box}img{max-width:100%;height:auto}
+body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--font-body);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px 96px}
+h1,h2,h3{font-family:var(--font-head);text-wrap:balance;margin:0}
+h1{font-size:clamp(38px,6vw,62px);font-weight:700;line-height:1.02;text-transform:uppercase}
+h2{font-size:clamp(26px,3.4vw,34px);font-weight:600;text-transform:uppercase;letter-spacing:.01em}
+h3{font-size:20px;font-weight:600;letter-spacing:.02em;text-transform:uppercase}
+p{margin:0}
+code,.mono{font-family:var(--font-mono);font-size:.86em}
+.eyebrow{font-family:var(--font-mono);font-size:11px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.topbar{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;padding:26px 0 22px;border-bottom:1px solid var(--line)}
+.logo-client{height:72px;width:auto}
+.byline{display:flex;align-items:center;gap:12px}
+.byline .lbl{font-family:var(--font-mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);text-align:right;line-height:1.5}
+.byline img{height:76px;width:auto;background:#fff;border-radius:5px;padding:7px 12px;border:1px solid var(--line)}
+@media(max-width:640px){.byline img{height:58px}.logo-client{height:56px}}
+header{border-bottom:4px solid var(--brand);padding:36px 0 26px;margin-bottom:8px;display:flex;flex-direction:column;gap:14px}
+.lede{max-width:66ch;color:var(--ink-2);font-size:17.5px}
+.strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:10px;margin:26px 0 0}
+.st{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--brand);border-radius:3px;padding:12px 14px;box-shadow:var(--shadow)}
+.st.wait{border-left-color:var(--line-strong)}
+.st .lbl{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:3px}
+.st .val{font-family:var(--font-head);font-size:21px;font-weight:600;text-transform:uppercase;line-height:1.15}
+.st .sub{font-size:13px;color:var(--muted);margin-top:2px}
+td .sub{display:block;font-size:12.5px;line-height:1.5;color:var(--muted);margin-top:5px}
+td .kwchip{margin-bottom:4px}
+section{margin-top:64px}
+.shead{display:flex;align-items:baseline;gap:14px;border-bottom:1px solid var(--line-strong);padding-bottom:9px;margin-bottom:22px;flex-wrap:wrap}
+.shead .num{font-family:var(--font-mono);font-size:12px;font-weight:600;letter-spacing:.1em;color:var(--brand-ink);background:var(--brand);padding:2px 7px;border-radius:2px}
+.note{color:var(--ink-2);margin-bottom:18px}
+.call{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--brand);border-radius:3px;padding:15px 18px;margin:18px 0;box-shadow:var(--shadow)}
+.call.warn{border-left-color:var(--warn)}
+.call .t{font-family:var(--font-head);text-transform:uppercase;font-weight:600;font-size:17px;letter-spacing:.03em;margin-bottom:4px}
+.call p{font-size:15.2px;color:var(--ink-2)}
+.tw{overflow-x:auto;border:1px solid var(--line);border-radius:3px;background:var(--surface);box-shadow:var(--shadow)}
+table{border-collapse:collapse;width:100%;font-size:14.5px;font-variant-numeric:tabular-nums}
+th{font-family:var(--font-mono);font-size:10.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);text-align:left;padding:11px 14px;border-bottom:1px solid var(--line-strong);white-space:nowrap;background:var(--surface-2)}
+td{padding:10px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+tr:last-child td{border-bottom:none}
+td.ag{font-weight:600;white-space:nowrap}
+.num2{font-family:var(--font-mono);font-size:11px;color:var(--muted)}
+.pill{display:inline-block;font-family:var(--font-mono);font-size:10px;font-weight:600;letter-spacing:.1em;padding:3px 8px;border-radius:2px;text-transform:uppercase;white-space:nowrap}
+.p-new{background:var(--brand);color:var(--brand-ink)}
+.p-upd{background:var(--good-soft);color:var(--good)}
+.p-old{background:var(--surface-2);color:var(--muted)}
+.p-wait{background:var(--warn-soft);color:var(--warn)}
+details{border:1px solid var(--line);border-radius:3px;background:var(--surface);box-shadow:var(--shadow);margin:18px 0;overflow:hidden}
+summary{cursor:pointer;padding:13px 16px;list-style:none;font-family:var(--font-head);text-transform:uppercase;font-weight:600;font-size:17px;letter-spacing:.03em;display:flex;justify-content:space-between;align-items:center;gap:12px;background:var(--surface-2)}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font-family:var(--font-mono);font-size:19px;color:var(--accent);line-height:1}
+details[open] summary::after{content:"\2212"}
+summary .cnt{font-family:var(--font-mono);font-size:11px;letter-spacing:.1em;color:var(--muted);margin-left:auto;margin-right:6px;text-transform:none}
+.dbody{padding:16px;border-top:1px solid var(--line)}
+.flow{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px;margin:18px 0}
+.fx{background:var(--surface);border:1px solid var(--line);border-radius:3px;padding:13px 15px;box-shadow:var(--shadow);position:relative}
+.fx .n{font-family:var(--font-mono);font-size:10px;letter-spacing:.12em;color:var(--muted);text-transform:uppercase}
+.fx .h{font-family:var(--font-head);font-size:18px;font-weight:600;text-transform:uppercase;margin-top:3px}
+.fx .d{font-size:13.5px;color:var(--ink-2);margin-top:4px}
+ul{margin:10px 0 0;padding-left:20px;color:var(--ink-2)}
+li{margin-bottom:8px}
+li::marker{color:var(--accent)}
+strong{color:var(--ink);font-weight:600}
+footer{margin-top:72px;padding-top:18px;border-top:1px solid var(--line);color:var(--muted);font-size:13.5px}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.adgrp{border:1px solid var(--line);border-radius:3px;background:var(--surface);box-shadow:var(--shadow);margin:18px 0;overflow:hidden}
+.adgrp>summary{cursor:pointer;list-style:none;display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;padding:14px 16px;background:var(--surface-2);border-bottom:1px solid transparent}
+.adgrp[open]>summary{border-bottom-color:var(--line)}
+.adgrp>summary::-webkit-details-marker{display:none}
+.adgrp>summary::after{content:"+";margin-left:auto;font-family:var(--font-mono);font-size:19px;color:var(--accent);line-height:1}
+.adgrp[open]>summary::after{content:"\2212"}
+.adgrp>summary .agname{font-family:var(--font-head);font-size:19px;font-weight:600;text-transform:uppercase;letter-spacing:.02em}
+.adgrp>summary .cnt{font-family:var(--font-mono);font-size:11px;letter-spacing:.08em;color:var(--muted)}
+.adgrp>summary:hover{background:var(--accent-soft)}
+.adgrp>.hd{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;padding:13px 16px;background:var(--surface-2);border-bottom:1px solid var(--line)}
+.adgrp>.hd h3{font-size:18px}
+.adgrp>.hd .kwn{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-left:auto}
+.adgrp>.bd{padding:16px}
+.adgrp .why{font-size:14.5px;color:var(--muted);margin:0 0 14px}
+.kwchip{display:inline-block;font-family:var(--font-mono);font-size:11px;border:1px solid var(--line-strong);padding:3px 8px;margin:0 5px 5px 0;border-radius:2px;color:var(--ink-2)}
+.plabel{font-family:var(--font-mono);font-size:10.5px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:16px 0 8px}
+.plabel:first-child{margin-top:0}
+.serp{background:var(--serp-ground);border:1px solid var(--line);border-radius:3px;padding:15px 17px;font-family:Arial,Helvetica,sans-serif;max-width:74ch}
+.serp .sp{font-size:13.5px;font-weight:bold;color:var(--ink);margin-bottom:3px}
+.serp .u{font-size:13.5px;color:var(--ink-2);line-height:1.3}
+.serp .t{font-size:19px;line-height:1.3;color:var(--serp-link);margin:3px 0 4px}
+.serp .d{font-size:13.5px;line-height:1.55;color:var(--ink-2)}
+.serp .sl{display:grid;grid-template-columns:1fr 1fr;gap:8px 20px;margin-top:12px;padding-top:11px;border-top:1px solid var(--line)}
+.serp .sl span{font-size:13.5px;color:var(--serp-link)}
+.snote{font-size:13.5px;color:var(--muted);margin:11px 0 0;line-height:1.55}
+ul.copy{list-style:none;margin:0;padding:0;columns:2;column-gap:30px;max-width:none}
+ul.copy.one{columns:1}
+ul.copy li{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px;align-items:baseline;padding:6px 0;margin:0;border-bottom:1px solid var(--line);font-size:14px;break-inside:avoid;color:var(--ink)}
+ul.copy li::marker{content:none}
+ul.copy .len{font-family:var(--font-mono);font-size:10.5px;color:var(--muted);font-variant-numeric:tabular-nums}
+ul.copy .shr{display:inline-block;font-family:var(--font-mono);font-style:normal;font-size:9px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);background:var(--accent-soft);padding:2px 6px;border-radius:2px;margin-left:8px;vertical-align:1px}
+ul.copy li.is-shared span:first-child{color:var(--ink-2)}
+ul.copy .len.over{color:var(--over);font-weight:600}
+@media(max-width:640px){ul.copy{columns:1}.serp .sl{grid-template-columns:1fr}}
+.pillars{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:10px;margin:18px 0}
+.pil{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--brand);border-radius:3px;padding:13px 15px;box-shadow:var(--shadow)}
+.pil .n{font-family:var(--font-mono);font-size:10px;letter-spacing:.12em;color:var(--muted)}
+.pil .h{font-family:var(--font-head);font-size:18px;font-weight:600;text-transform:uppercase;margin-top:3px}
+.pil .d{font-size:13.5px;color:var(--ink-2);margin-top:4px}
+@media print{*{box-shadow:none!important}.wrap{max-width:none;padding:0 0 24px}.adgrp,.serp,.pil,.call,.fx,.st,.shead{break-inside:avoid}.shead{break-after:avoid}section{margin-top:38px}details{border:none;box-shadow:none}details summary{display:none}details .dbody{border-top:none;padding:0}details:not([open]) .dbody{display:block}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+.logo-text{font-family:var(--font-head);font-size:30px;font-weight:700;text-transform:uppercase;letter-spacing:.02em}
+.byline .by-text{font-family:var(--font-head);font-size:18px;font-weight:600;text-transform:uppercase}
+.logo-client.boxed{background:#fff;border-radius:5px;padding:7px 12px;border:1px solid var(--line)}
+.accent-soft-bg{background:var(--accent-soft)}
+
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="topbar">
+  <div><span class="logo-text">Harbour Paws</span></div>
+  <div class="byline"><span class="lbl">Prepared&nbsp;by</span><span class="by-text">Your Name</span></div>
+</div>
+
+<header>
+  <span class="eyebrow">Harbour Paws &nbsp;/&nbsp; Google Ads &nbsp;/&nbsp; 23 September 2026</span>
+  <h1>Your Google Ads Build</h1>
+  <p class="lede">This is the plan for your Google Ads before anything goes live: where the ads will show, what they will say, and what we need from you. Nothing runs and no budget is spent until you have approved it.</p>
+</header>
+
+<div class="strip">
+  <div class="st"><span class="lbl">Ad groups</span><div class="val">3 groups</div><div class="sub">One search theme each</div></div>
+  <div class="st"><span class="lbl">Daily budget</span><div class="val">$30 / day</div><div class="sub">About $912 a month</div></div>
+  <div class="st wait"><span class="lbl">Ads status</span><div class="val">Not live</div><div class="sub">Waiting on your approval</div></div>
+</div>
+
+<section>
+  <div class="shead"><span class="num">01</span><h2>What we found</h2></div>
+<p class="note">Your account has run before, but it was counting page visits as enquiries, so the results it reported were higher than what actually came through.</p>
+<div class="call"><div class="t">What this means for you</div><p>We are starting the measurement fresh, so every number from here on is a real enquiry.</p></div>
+</section>
+
+<section>
+  <div class="shead"><span class="num">02</span><h2>What we count as an enquiry</h2></div>
+<p class="note">Two things a visitor can do that we treat as a genuine result. Each is counted once per person.</p>
+
+  <div class="tw"><table>
+    <thead><tr><th>What the visitor does</th><th>Counts as</th></tr></thead>
+    <tbody>
+      <tr><td class="ag">Submits your booking form</td><td><span class="pill p-new">Primary</span></td></tr>
+      <tr><td class="ag">Taps your phone number</td><td><span class="pill p-new">Primary</span></td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section>
+  <div class="shead"><span class="num">03</span><h2>Where your ads will show</h2></div>
+<p class="note">The suburbs your van covers, and nowhere else. We target people who are in these areas, not people elsewhere reading about them.</p>
+
+  <div class="tw"><table>
+    <thead><tr><th>Area we target</th><th>What it covers</th></tr></thead>
+    <tbody>
+      <tr><td class="ag">Inner West</td><td>Balmain, Leichhardt, Newtown, Marrickville</td></tr>
+      <tr><td class="ag">Eastern Suburbs</td><td>Bondi, Coogee, Randwick, Paddington</td></tr>
+      <tr><td class="ag">Lower North Shore</td><td>Mosman, Neutral Bay, Cremorne</td></tr>
+    </tbody>
+  </table></div>
+
+<div class="strip" style="margin-top:22px">
+  <div class="st"><span class="lbl">Daily budget</span><div class="val">$30 / day</div><div class="sub">About $912 a month</div></div>
+  <div class="st"><span class="lbl">When ads run</span><div class="val">6am to 9pm</div><div class="sub">Seven days a week</div></div>
+</div>
+  <div class="plabel" style="margin-top:30px">Searches we block before they cost you anything</div>
+  <p class="note">Just as important as choosing what to appear for is choosing what not to. We have loaded <strong>131 blocked terms</strong> across 3 lists, so your budget is not spent on people who were never going to buy.</p>
+
+  <div class="tw"><table>
+    <thead><tr><th>What we block</th><th>Examples</th><th>Terms</th></tr></thead>
+    <tbody>
+      <tr><td class="ag">Do it yourself</td><td>People after clippers, shampoo or how to groom at home</td><td><span class="num2">42</span></td></tr>
+      <tr><td class="ag">Jobs &amp; training</td><td>Grooming courses, apprenticeships, salaries</td><td><span class="num2">31</span></td></tr>
+      <tr><td class="ag">Other cities</td><td>Melbourne, Brisbane, the Central Coast</td><td><span class="num2">58</span></td></tr>
+    </tbody>
+  </table></div>
+<div class="call"><div class="t">Why the ads run early</div><p>Most bookings are made before work, so the ads are on from 6am.</p></div>
+</section>
+
+<section>
+  <div class="shead"><span class="num">04</span><h2>What every ad says about you</h2></div>
+<p class="note">Three things every ad leans on, because they are what set you apart.</p>
+  <div class="pillars">
+    <div class="pil"><div class="n">01</div><div class="h">We come to you</div><div class="d">A fully fitted van parked outside your home. No car trip, no kennel.</div></div>
+    <div class="pil"><div class="n">02</div><div class="h">One dog at a time</div><div class="d">No cages and no waiting around other dogs.</div></div>
+    <div class="pil"><div class="n">03</div><div class="h">Same groomer each visit</div><div class="d">Your dog gets to know one person.</div></div>
+  </div>
+<div class="call warn"><div class="t">Deliberately absent</div><p>No prices in the ads. They vary by breed and coat, so we let the booking form do that.</p></div>
+</section>
+
+<section>
+  <div class="shead"><span class="num">05</span><h2>The lines every ad shares</h2></div>
+  <p class="note">These 7 lines appear in all 3 of your ads. They are written once and reused, so changing a word here changes it everywhere at once rather than in 3 separate places. Everything in the next section is wording written for one ad group only.</p>
+  <div class="plabel">Your selling points, in every ad</div>
+
+      <ul class="copy ">
+        <li><span>Mobile Dog Grooming</span><span class="len">19</span></li>
+        <li><span>We Come To Your Door</span><span class="len">20</span></li>
+        <li><span>One Dog At A Time</span><span class="len">17</span></li>
+      </ul>
+  <div class="plabel">Your calls to action, in every ad</div>
+
+      <ul class="copy ">
+        <li><span>Book Your Groom Today</span><span class="len">21</span></li>
+        <li><span>Check Our Next Available</span><span class="len">24</span></li>
+      </ul>
+
+  <div class="plabel">Shared descriptions, in every ad</div>
+
+      <ul class="copy one">
+        <li><span>A Fully Fitted Grooming Van Parked Outside Your Home. No Car Trips, No Kennels At All.</span><span class="len">86</span></li>
+        <li><span>Calm, One On One Grooming With The Same Groomer Every Visit. Book Your Next Groom Now.</span><span class="len">86</span></li>
+      </ul>
+  <div class="call"><div class="t">Why the numbers beside each line matter</div><p>Google gives you 30 characters for a headline and 90 for a description, and charges the same whether you use them or not. The number is what each line uses. Across your ads the descriptions average 86 of the 90 available.</p></div>
+</section>
+
+<section>
+  <div class="shead"><span class="num">06</span><h2>Your ads</h2></div>
+  <p class="note">3 groups of ads, each answering one thing people type into Google. Google builds each ad by picking from a pool of headlines and descriptions, then testing the combinations, so the wording is raw material rather than a finished ad. Each ad gets up to 8 headlines and 4 descriptions. <strong>Tap any ad group below to open it.</strong></p>
+  <div class="call"><div class="t">Waiting on your approval</div><p>None of this is in your Google Ads account yet. Once you are happy with the wording we build it, paused, and nothing runs until we switch it on together. Changes are easiest now, because Google will not let us edit an ad in place once it is running.</p></div>
+
+  <details class="adgrp">
+    <summary>
+      <span class="agname">1. Mobile Dog Grooming</span>
+      <span class="cnt">8 headlines &middot; 4 descriptions</span>
+    </summary>
+    <div class="bd">
+      <p class="why">The owner already wants someone to come to them.</p>
+      <div class="plabel">Searches this ad answers</div>
+      <div><span class="kwchip">mobile dog grooming</span><span class="kwchip">mobile dog groomer</span></div>
+
+      <div class="plabel">How it could show on Google</div>
+      <div class="serp">
+        <div class="sp">Sponsored</div>
+        <div class="u">harbourpaws.com.au/Mobile/Grooming</div>
+        <div class="t">Mobile Dog Grooming Sydney | Mobile Dog Groomer Near You | Book Your Groom Today</div>
+        <div class="d">Mobile Dog Grooming Across Sydney. Wash, Cut, Nails &amp; Ears Done Right Outside Your Home. A Fully Fitted Grooming Van Parked Outside Your Home. No Car Trips, No Kennels At All.</div>
+        <div class="sl">
+          <span>Book A Groom</span>
+          <span>Areas We Cover</span>
+          <span>Our Grooming Van</span>
+          <span>Meet The Groomers</span>
+        </div>
+      </div>
+      <p class="snote">Google mixes and matches the lines, so what shows changes with each search. This is one likely combination. The blue links are your sitelinks and can appear on every ad.</p>
+
+      <div class="plabel">All 8 headlines in this ad &middot; 30 character limit</div>
+
+      <ul class="copy ">
+        <li><span>Mobile Dog Grooming Sydney</span><span class="len">26</span></li>
+        <li><span>Mobile Dog Groomer Near You</span><span class="len">27</span></li>
+        <li><span>Grooming Van At Your Door</span><span class="len">25</span></li>
+        <li class="is-shared"><span>Mobile Dog Grooming<em class="shr">Shared</em></span><span class="len">19</span></li>
+        <li class="is-shared"><span>We Come To Your Door<em class="shr">Shared</em></span><span class="len">20</span></li>
+        <li class="is-shared"><span>One Dog At A Time<em class="shr">Shared</em></span><span class="len">17</span></li>
+        <li class="is-shared"><span>Book Your Groom Today<em class="shr">Shared</em></span><span class="len">21</span></li>
+        <li class="is-shared"><span>Check Our Next Available<em class="shr">Shared</em></span><span class="len">24</span></li>
+      </ul>
+      <div class="plabel">All 4 descriptions in this ad &middot; 90 character limit</div>
+
+      <ul class="copy one">
+        <li><span>Mobile Dog Grooming Across Sydney. Wash, Cut, Nails &amp; Ears Done Right Outside Your Home.</span><span class="len">88</span></li>
+        <li><span>Skip The Salon. Our Grooming Van Comes To You On A Day &amp; Time That Suits Your Household.</span><span class="len">88</span></li>
+        <li class="is-shared"><span>A Fully Fitted Grooming Van Parked Outside Your Home. No Car Trips, No Kennels At All.<em class="shr">Shared</em></span><span class="len">86</span></li>
+        <li class="is-shared"><span>Calm, One On One Grooming With The Same Groomer Every Visit. Book Your Next Groom Now.<em class="shr">Shared</em></span><span class="len">86</span></li>
+      </ul>
+      <p class="snote">The lines marked <em class="shr">Shared</em> run in all 3 ads and are written once, so changing one changes it everywhere. The rest are written only for this ad group. The easiest search to win. They want exactly what you offer.</p>
+    </div>
+  </details>
+
+  <details class="adgrp">
+    <summary>
+      <span class="agname">2. Dog Grooming Near Me</span>
+      <span class="cnt">8 headlines &middot; 4 descriptions</span>
+    </summary>
+    <div class="bd">
+      <p class="why">The broadest search. Many will not know mobile grooming exists.</p>
+      <div class="plabel">Searches this ad answers</div>
+      <div><span class="kwchip">dog grooming near me</span><span class="kwchip">dog groomer near me</span></div>
+
+      <div class="plabel">How it could show on Google</div>
+      <div class="serp">
+        <div class="sp">Sponsored</div>
+        <div class="u">harbourpaws.com.au/Dog/Grooming</div>
+        <div class="t">Dog Grooming Near You | Local Dog Groomer | Book Your Groom Today</div>
+        <div class="d">Local Dog Grooming That Comes To You. Serving The Inner West, Eastern Suburbs &amp; North. A Fully Fitted Grooming Van Parked Outside Your Home. No Car Trips, No Kennels At All.</div>
+        <div class="sl">
+          <span>Book A Groom</span>
+          <span>Areas We Cover</span>
+          <span>Our Grooming Van</span>
+          <span>Meet The Groomers</span>
+        </div>
+      </div>
+      <p class="snote">Google mixes and matches the lines, so what shows changes with each search. This is one likely combination. The blue links are your sitelinks and can appear on every ad.</p>
+
+      <div class="plabel">All 8 headlines in this ad &middot; 30 character limit</div>
+
+      <ul class="copy ">
+        <li><span>Dog Grooming Near You</span><span class="len">21</span></li>
+        <li><span>Local Dog Groomer</span><span class="len">17</span></li>
+        <li><span>Grooming Without The Drive</span><span class="len">26</span></li>
+        <li class="is-shared"><span>Mobile Dog Grooming<em class="shr">Shared</em></span><span class="len">19</span></li>
+        <li class="is-shared"><span>We Come To Your Door<em class="shr">Shared</em></span><span class="len">20</span></li>
+        <li class="is-shared"><span>One Dog At A Time<em class="shr">Shared</em></span><span class="len">17</span></li>
+        <li class="is-shared"><span>Book Your Groom Today<em class="shr">Shared</em></span><span class="len">21</span></li>
+        <li class="is-shared"><span>Check Our Next Available<em class="shr">Shared</em></span><span class="len">24</span></li>
+      </ul>
+      <div class="plabel">All 4 descriptions in this ad &middot; 90 character limit</div>
+
+      <ul class="copy one">
+        <li><span>Local Dog Grooming That Comes To You. Serving The Inner West, Eastern Suburbs &amp; North.</span><span class="len">86</span></li>
+        <li><span>Wash, Cut, Nail Trim &amp; Ear Clean In Our Van, Parked Right Outside Your Home. Book Now.</span><span class="len">86</span></li>
+        <li class="is-shared"><span>A Fully Fitted Grooming Van Parked Outside Your Home. No Car Trips, No Kennels At All.<em class="shr">Shared</em></span><span class="len">86</span></li>
+        <li class="is-shared"><span>Calm, One On One Grooming With The Same Groomer Every Visit. Book Your Next Groom Now.<em class="shr">Shared</em></span><span class="len">86</span></li>
+      </ul>
+      <p class="snote">The lines marked <em class="shr">Shared</em> run in all 3 ads and are written once, so changing one changes it everywhere. The rest are written only for this ad group. </p>
+    </div>
+  </details>
+
+  <details class="adgrp">
+    <summary>
+      <span class="agname">3. Anxious Dog Grooming</span>
+      <span class="cnt">8 headlines &middot; 4 descriptions</span>
+    </summary>
+    <div class="bd">
+      <p class="why">An owner whose dog struggles at a busy salon.</p>
+      <div class="plabel">Searches this ad answers</div>
+      <div><span class="kwchip">grooming for anxious dogs</span></div>
+
+      <div class="plabel">How it could show on Google</div>
+      <div class="serp">
+        <div class="sp">Sponsored</div>
+        <div class="u">harbourpaws.com.au/Anxious/Dogs</div>
+        <div class="t">Grooming For Anxious Dogs | Calm, Quiet Grooming | Book Your Groom Today</div>
+        <div class="d">Grooming For Nervous Dogs In A Quiet Van, With No Cages &amp; No Other Dogs Around Them. A Fully Fitted Grooming Van Parked Outside Your Home. No Car Trips, No Kennels At All.</div>
+        <div class="sl">
+          <span>Book A Groom</span>
+          <span>Areas We Cover</span>
+          <span>Our Grooming Van</span>
+          <span>Meet The Groomers</span>
+        </div>
+      </div>
+      <p class="snote">Google mixes and matches the lines, so what shows changes with each search. This is one likely combination. The blue links are your sitelinks and can appear on every ad.</p>
+
+      <div class="plabel">All 8 headlines in this ad &middot; 30 character limit</div>
+
+      <ul class="copy ">
+        <li><span>Grooming For Anxious Dogs</span><span class="len">25</span></li>
+        <li><span>Calm, Quiet Grooming</span><span class="len">20</span></li>
+        <li><span>No Cages, No Other Dogs</span><span class="len">23</span></li>
+        <li class="is-shared"><span>Mobile Dog Grooming<em class="shr">Shared</em></span><span class="len">19</span></li>
+        <li class="is-shared"><span>We Come To Your Door<em class="shr">Shared</em></span><span class="len">20</span></li>
+        <li class="is-shared"><span>One Dog At A Time<em class="shr">Shared</em></span><span class="len">17</span></li>
+        <li class="is-shared"><span>Book Your Groom Today<em class="shr">Shared</em></span><span class="len">21</span></li>
+        <li class="is-shared"><span>Check Our Next Available<em class="shr">Shared</em></span><span class="len">24</span></li>
+      </ul>
+      <div class="plabel">All 4 descriptions in this ad &middot; 90 character limit</div>
+
+      <ul class="copy one">
+        <li><span>Grooming For Nervous Dogs In A Quiet Van, With No Cages &amp; No Other Dogs Around Them.</span><span class="len">84</span></li>
+        <li><span>Patient, Gentle Groomers Who Take Their Time So Your Dog Stays Calm The Whole Session.</span><span class="len">86</span></li>
+        <li class="is-shared"><span>A Fully Fitted Grooming Van Parked Outside Your Home. No Car Trips, No Kennels At All.<em class="shr">Shared</em></span><span class="len">86</span></li>
+        <li class="is-shared"><span>Calm, One On One Grooming With The Same Groomer Every Visit. Book Your Next Groom Now.<em class="shr">Shared</em></span><span class="len">86</span></li>
+      </ul>
+      <p class="snote">The lines marked <em class="shr">Shared</em> run in all 3 ads and are written once, so changing one changes it everywhere. The rest are written only for this ad group. Written for the owner who has had a bad salon experience.</p>
+    </div>
+  </details>
+</section>
+
+<section>
+  <div class="shead"><span class="num">07</span><h2>The extras under every ad</h2></div>
+<p class="note">These sit beneath the ad and give people a second and third way in. They usually lift the click rate on the whole ad and cost nothing extra.</p>
+
+<div class="strip">
+  <div class="st"><span class="lbl">New</span><div class="val">10 assets</div><div class="sub">Brand new</div></div>
+</div>
+
+  <div class="plabel" style="margin-top:26px">Sitelinks, the blue links under the ad</div>
+  <div class="tw"><table>
+    <thead><tr><th>Link</th><th>What it will say</th><th>Action</th></tr></thead>
+    <tbody>
+
+      <tr>
+        <td class="ag">Book A Groom</td>
+        <td>Pick A Day &amp; Time Online &middot; We Confirm Within The Hour</td>
+        <td><span class="pill p-new">New</span></td>
+      </tr>
+      <tr>
+        <td class="ag">Areas We Cover</td>
+        <td>Inner West &amp; Eastern Suburbs &middot; Lower North Shore Too</td>
+        <td><span class="pill p-new">New</span></td>
+      </tr>
+      <tr>
+        <td class="ag">Our Grooming Van</td>
+        <td>Warm Water &amp; Quiet Dryers &middot; Fully Fitted &amp; Air Conditioned</td>
+        <td><span class="pill p-new">New</span></td>
+      </tr>
+      <tr>
+        <td class="ag">Meet The Groomers</td>
+        <td>Qualified &amp; Fully Insured &middot; The Same Groomer Every Time</td>
+        <td><span class="pill p-new">New</span></td>
+      </tr>
+
+    </tbody>
+  </table></div>
+  <div class="plabel" style="margin-top:26px">Callouts, short phrases under the ad</div>
+  <div class="tw"><table>
+    <thead><tr><th>Callout</th><th>Length</th><th>Action</th></tr></thead>
+    <tbody>
+
+      <tr>
+        <td class="ag">Fully Insured</td>
+        <td><span class="num2">13/25 characters</span></td>
+        <td><span class="pill p-new">New</span></td>
+      </tr>
+      <tr>
+        <td class="ag">All Breeds Welcome</td>
+        <td><span class="num2">18/25 characters</span></td>
+        <td><span class="pill p-new">New</span></td>
+      </tr>
+      <tr>
+        <td class="ag">Open Seven Days</td>
+        <td><span class="num2">15/25 characters</span></td>
+        <td><span class="pill p-new">New</span></td>
+      </tr>
+      <tr>
+        <td class="ag">Natural Shampoos</td>
+        <td><span class="num2">16/25 characters</span></td>
+        <td><span class="pill p-new">New</span></td>
+      </tr>
+    </tbody>
+  </table></div>
+  <div class="plabel" style="margin-top:26px">Services, a list of what you do</div>
+  <div class="tw"><table>
+    <thead><tr><th>Header</th><th>Values</th><th>Action</th></tr></thead>
+    <tbody>
+      <tr>
+        <td class="ag">Services</td>
+        <td><span class="kwchip">Full Groom</span><span class="kwchip">Wash &amp; Dry</span><span class="kwchip">Nail Trim</span><span class="kwchip">Puppy Intro Groom</span></td>
+        <td><span class="pill p-new">New</span></td>
+      </tr>
+    </tbody>
+  </table></div>
+  <div class="plabel" style="margin-top:26px">Call button</div>
+  <div class="call"><div class="t">Set to 0400 000 000</div><p>The tap to call button in your ads rings this number.</p></div>
+</section>
+
+<section>
+  <div class="shead"><span class="num">08</span><h2>What is left before we go live</h2></div>
+
+  <div class="tw"><table>
+    <thead><tr><th>Step</th><th>Who</th><th>Status</th></tr></thead>
+    <tbody>
+      <tr><td class="ag">Tracking tested end to end</td><td>Us</td><td><span class="pill p-upd">Done</span></td></tr>
+      <tr><td class="ag">Ad wording approved</td><td>Harbour Paws</td><td><span class="pill p-wait">Waiting</span></td></tr>
+      <tr><td class="ag">Campaign built in your account, paused</td><td>Us</td><td><span class="pill p-old">To do</span></td></tr>
+      <tr><td class="ag">Switch on</td><td>Both</td><td><span class="pill p-old">To do</span></td></tr>
+    </tbody>
+  </table></div>
+
+</section>
+
+<section>
+  <div class="shead"><span class="num">09</span><h2>What we need from you</h2></div>
+<ul>
+  <li><strong>Read the ad wording and tell us what does not sound like you.</strong> Change anything you want changed.</li>
+  <li><strong>Confirm the suburbs.</strong> If the van goes further than the areas above, tell us before we go live.</li>
+</ul>
+</section>
+
+<footer>Prepared for Harbour Paws by Your Name, 23 September 2026. Nothing is live yet. No budget is spent until we switch it on together.</footer>
+</div>
+</body>
+</html>

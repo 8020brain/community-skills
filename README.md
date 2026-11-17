@@ -14,6 +14,8 @@ From your brain, run:
 
 | Skill | Contributor | Description |
 |-------|-------------|-------------|
+| `logo-brief` | Sandi Walsh | Write a logo brief from what your brain knows about the client, to paste into Claude Design for the logo concepts. Always asks whether the client already has a logo |
+| `google-ads-build-check-sheet` | Isadora Benjamin (shared by Sandi Walsh) | One branded page for the client to approve before launch: the plan, every ad group with a Google preview, the extras and what's needed from them. Checks all copy against Google's limits first; never connects to Google Ads |
 | `linkedin-ad-library` | Thuha Wright | Save LinkedIn ad screenshots to a tagged swipe file in your Notion (format, style, hook, objective, CTA, industry, plus why it works). The expanded multi-platform version ships in the brain as `ad-swipe-file` |
 | `google-ads-pmax-asset-group-creator` | Gabriele Benedetti | Build a new Performance Max asset group through the Google Ads API, one guided step at a time. Checks character limits before the API call, reuses the campaign's existing audience signals and brand logo, comes out paused and dry-run by default. Python skill (needs the google-ads library) |
 | `seo-council-eval` | Jonti Bolles | A council of named-lens SEO experts scores one page across six dimensions (entity coverage, GEO/AEO, search intent, E-E-A-T, on-page, strategic fit) and returns a ranked fix list with a ship / fix-then-ship / rework verdict |

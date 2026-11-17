@@ -9,6 +9,22 @@
   },
   "plugins": [
     {
+      "name": "logo-brief",
+      "description": "Write a detailed logo brief for a client (or your own business) to paste into Claude Design, which then makes the logo concepts. Fills in what your brain already knows about the client and their website, asks only for what's missing, one question at a time, and saves the brief with the client's files.",
+      "source": "./logo-brief",
+      "author": {
+        "name": "Sandi Walsh"
+      }
+    },
+    {
+      "name": "google-ads-build-check-sheet",
+      "description": "Build one branded web page to send a client before a Google Ads campaign goes live: the plan, every ad group with a Google preview and all its headlines and descriptions, the sitelinks and callouts, and what's needed from the client. Checks every line of copy against Google's character limits and house rules first, and builds nothing until it all passes. Never connects to Google Ads.",
+      "source": "./google-ads-build-check-sheet",
+      "author": {
+        "name": "Isadora Benjamin (shared by Sandi Walsh)"
+      }
+    },
+    {
       "name": "linkedin-ad-library",
       "description": "Save LinkedIn ad screenshots to your own LinkedIn Ad Library swipe file in Notion, auto-tagged by format, creative style, hook, industry, objective and CTA, with a short note on why each ad works. First run builds the Notion database and gallery views for you. Needs the Notion connector.",
       "source": "./linkedin-ad-library",
